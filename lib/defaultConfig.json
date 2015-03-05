@@ -1,0 +1,17 @@
+{
+  "md5Length": 7,
+  "md5Connector": "_",
+  "include": null,
+  "exclude": null,
+  "fileType": {
+    "text": null,
+    "image": null
+  },
+  "plugins": {
+  },
+  "test": "mocha",
+  "deploy": {
+  },
+  "roadmap": {
+  }
+}
