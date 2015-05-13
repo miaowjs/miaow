@@ -5,7 +5,7 @@
 var commander = require('commander');
 var miaow = require('../index');
 var pkg = require('../package.json');
-var _ = require('underscore');
+var _ = require('lodash');
 
 commander
   .version(pkg.version)
