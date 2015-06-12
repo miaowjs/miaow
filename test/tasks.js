@@ -11,7 +11,6 @@ var outputPath = path.resolve(__dirname, './output');
 var defaultOptions = {
   cwd: cwdPath,
   output: outputPath,
-  parse: false,
   mini: false,
   lint: false,
   pack: false
@@ -43,7 +42,6 @@ describe('任务', function () {
 
   it('普通任务', function (done) {
     var options = _.extend({}, defaultOptions, {
-      parse: true,
       module: {
         parse: [
           {
@@ -72,7 +70,6 @@ describe('任务', function () {
 
   it('任务序列', function (done) {
     var options = _.extend({}, defaultOptions, {
-      parse: true,
       module: {
         parse: [
           {
@@ -140,7 +137,6 @@ describe('任务', function () {
 
     var options = _.extend({}, defaultOptions, {
       domain: '//www.example.com',
-      parse: true,
       module: {
         parse: [
           {
