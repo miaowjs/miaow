@@ -1,7 +1,7 @@
 {
   "name": "miaow",
   "description": "基于模块的前端构建工具",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": "miaowjs/miaow",
   "author": {
     "name": "anhulife",
@@ -17,6 +17,8 @@
     "chalk": "~1.0.0",
     "dateformat": "~1.0.11",
     "fs-extra": "~0.18.3",
+    "gaze": "~0.5.1",
+    "glob": "~5.0.10",
     "iconv-lite": "~0.4.8",
     "lodash": "~3.8.0",
     "map-stream": "~0.0.5",
@@ -26,7 +28,6 @@
     "serialize-javascript": "~1.0.0",
     "temp": "~0.8.1",
     "vinyl": "~0.4.0",
-    "vinyl-fs": "~1.0.0",
     "yargs ": "~3.10.0"
   },
   "devDependencies": {
