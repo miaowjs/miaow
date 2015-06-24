@@ -12,11 +12,9 @@ var outputPath = path.resolve(__dirname, './output');
 var defaultOptions = {
   cwd: cwdPath,
   output: outputPath,
-  mini: false,
-  lint: false,
   pack: false,
   module: {
-    parse: []
+    tasks: []
   }
 };
 

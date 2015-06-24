@@ -11,8 +11,6 @@ var outputPath = path.resolve(__dirname, './output');
 var defaultOptions = {
   cwd: cwdPath,
   output: outputPath,
-  mini: false,
-  lint: false,
   pack: false
 };
 
@@ -43,7 +41,7 @@ describe('任务', function () {
   it('普通任务', function (done) {
     var options = _.extend({}, defaultOptions, {
       module: {
-        parse: [
+        tasks: [
           {
             test: /foo\.js$/,
             plugins: function (option, cb) {
@@ -71,7 +69,7 @@ describe('任务', function () {
   it('任务序列', function (done) {
     var options = _.extend({}, defaultOptions, {
       module: {
-        parse: [
+        tasks: [
           {
             test: /foo\.js$/,
             plugins: [function (option, cb) {
@@ -138,7 +136,7 @@ describe('任务', function () {
     var options = _.extend({}, defaultOptions, {
       domain: '//www.example.com',
       module: {
-        parse: [
+        tasks: [
           {
             test: /bar\.js$/,
             plugins: addHash
