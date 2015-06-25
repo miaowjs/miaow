@@ -1,7 +1,7 @@
 {
   "name": "miaow",
   "description": "基于模块的前端构建工具",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "miaowjs/miaow",
   "author": {
     "name": "anhulife",
@@ -15,7 +15,7 @@
     "async": "~0.9.0",
     "chalk": "~1.0.0",
     "dateformat": "~1.0.11",
-    "fs-extra": "~0.18.3",
+    "fs-extra": "~0.20.1",
     "gaze": "~0.5.1",
     "glob": "~5.0.10",
     "iconv-lite": "~0.4.8",
