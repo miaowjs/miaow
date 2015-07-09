@@ -1,7 +1,7 @@
 {
   "name": "miaow",
   "description": "基于模块的前端构建工具",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "repository": "miaowjs/miaow",
   "author": {
     "name": "anhulife",
@@ -32,7 +32,7 @@
     "miaow-inline-parse": "~0.1.1",
     "miaow-less-parse": "~0.0.1",
     "miaow-css-autoprefixer": "~0.0.2",
-    "miaow-css-sprite": "~0.1.1",
+    "miaow-css-sprite": "~0.1.2",
     "miaow-css-pack": "~0.0.2",
     "miaow-css-mini": "~0.1.0",
     "miaow-jpg-mini": "~0.2.0",
