@@ -38,12 +38,14 @@ if (argv._.length) {
 if (argv.watch) {
   miaow.watch(options);
 } else {
-  miaow.compile(options, function (err) {
+  miaow.compile(options, function (err, cache) {
     if (err) {
       console.error(err.toString());
       process.exit(1);
-    } else {
-      process.exit(0);
+      return;
     }
+
+    cache.destroy();
+    process.exit(0);
   });
 }
