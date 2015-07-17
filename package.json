@@ -1,7 +1,7 @@
 {
   "name": "miaow",
   "description": "基于模块的前端构建工具",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "repository": "miaowjs/miaow",
   "author": {
     "name": "anhulife",
@@ -16,6 +16,7 @@
     "chalk": "~1.0.0",
     "chokidar": "~1.0.3",
     "dateformat": "~1.0.11",
+    "freeport": "~1.0.5",
     "fs-extra": "~0.20.1",
     "glob": "~5.0.10",
     "iconv-lite": "~0.4.8",
@@ -31,6 +32,7 @@
     "miaow-url-parse": "~0.3.0",
     "miaow-inline-parse": "~0.2.0",
     "miaow-less-parse": "~0.1.0",
+    "miaow-livereload": "~0.0.1",
     "miaow-css-autoprefixer": "~0.0.2",
     "miaow-css-sprite": "~0.2.0",
     "miaow-css-pack": "~0.1.0",
@@ -41,7 +43,8 @@
     "serialize-javascript": "~1.0.0",
     "temp": "~0.8.1",
     "vinyl": "~0.4.0",
-    "yargs ": "~3.10.0"
+    "yargs ": "~3.10.0",
+    "ws": "~0.7.2"
   },
   "devDependencies": {
     "mocha": "^2.2.4"

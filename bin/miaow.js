@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 var _ = require('lodash');
+var chalk = require('chalk');
 var miaow = require('../index');
+var mutil = require('miaow-util');
 var path = require('path');
 var argv = require('yargs')
   .options({
@@ -40,6 +42,9 @@ if (argv.watch) {
 } else {
   miaow.compile(options, function (err, cache) {
     if (err) {
+      mutil.log(chalk.red.bold('编译失败'));
+
+      err.showStack = false;
       console.error(err.toString());
       process.exit(1);
       return;
