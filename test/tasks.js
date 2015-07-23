@@ -2,6 +2,7 @@ var _ = require('lodash');
 var assert = require('assert');
 var async = require('async');
 var fs = require('fs');
+var mutil = require('miaow-util');
 var path = require('path');
 
 var miaow = require('../index');
@@ -44,7 +45,7 @@ describe('任务', function () {
         tasks: [
           {
             test: /foo\.js$/,
-            plugins: function (option, cb) {
+            plugins: mutil.plugin('replace', '0.0.1', function (option, cb) {
               assert.equal(
                 this.file.contents.toString(),
                 'module.exports = \'你好，世界！\';\n'
@@ -52,7 +53,7 @@ describe('任务', function () {
 
               this.file.contents = new Buffer('module.exports = \'Hello, world!\';\n');
               cb();
-            }
+            })
           }
         ]
       }
@@ -72,15 +73,15 @@ describe('任务', function () {
         tasks: [
           {
             test: /foo\.js$/,
-            plugins: [function (option, cb) {
+            plugins: [mutil.plugin('replace', '0.0.1', function (option, cb) {
               assert.equal(this.file.contents.toString(), 'module.exports = \'你好，世界！\';\n');
               this.file.contents = new Buffer('module.exports = \'Hello, world!\';\n');
               cb();
-            }, function (option, cb) {
+            }), mutil.plugin('replace', '0.0.2', function (option, cb) {
               assert.equal(this.file.contents.toString(), 'module.exports = \'Hello, world!\';\n');
               this.file.contents = new Buffer('module.exports = \'Hello, 世界!\';\n');
               cb();
-            }]
+            })]
           }
         ]
       }
@@ -139,7 +140,7 @@ describe('任务', function () {
         tasks: [
           {
             test: /bar\.js$/,
-            plugins: addHash
+            plugins: mutil.plugin('addHash', '0.0.1', addHash)
           }
         ]
       }
