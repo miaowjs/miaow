@@ -47,11 +47,11 @@ describe('任务', function () {
             test: /foo\.js$/,
             plugins: mutil.plugin('replace', '0.0.1', function (option, cb) {
               assert.equal(
-                this.file.contents.toString(),
+                this.contents.toString(),
                 'module.exports = \'你好，世界！\';\n'
               );
 
-              this.file.contents = new Buffer('module.exports = \'Hello, world!\';\n');
+              this.contents = new Buffer('module.exports = \'Hello, world!\';\n');
               cb();
             })
           }
@@ -74,12 +74,12 @@ describe('任务', function () {
           {
             test: /foo\.js$/,
             plugins: [mutil.plugin('replace', '0.0.1', function (option, cb) {
-              assert.equal(this.file.contents.toString(), 'module.exports = \'你好，世界！\';\n');
-              this.file.contents = new Buffer('module.exports = \'Hello, world!\';\n');
+              assert.equal(this.contents.toString(), 'module.exports = \'你好，世界！\';\n');
+              this.contents = new Buffer('module.exports = \'Hello, world!\';\n');
               cb();
             }), mutil.plugin('replace', '0.0.2', function (option, cb) {
-              assert.equal(this.file.contents.toString(), 'module.exports = \'Hello, world!\';\n');
-              this.file.contents = new Buffer('module.exports = \'Hello, 世界!\';\n');
+              assert.equal(this.contents.toString(), 'module.exports = \'Hello, world!\';\n');
+              this.contents = new Buffer('module.exports = \'Hello, 世界!\';\n');
               cb();
             })]
           }
@@ -100,7 +100,7 @@ describe('任务', function () {
       var relativePathList = [];
       var moduleUrlMap = {};
       var module = this;
-      var contents = module.file.contents.toString();
+      var contents = module.contents.toString();
 
       // 获取所有依赖的模块路径
       contents.replace(/require\(['"](\S+)['"]\)/g, function (statement, relativePath) {
@@ -129,7 +129,7 @@ describe('任务', function () {
           return statement.replace(relativePath, moduleUrlMap[relativePath]);
         });
 
-        module.file.contents = new Buffer(contents);
+        module.contents = new Buffer(contents);
         cb();
       });
     }
