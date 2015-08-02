@@ -40,11 +40,11 @@ if (argv._.length) {
 if (argv.watch) {
   miaow.watch(options);
 } else {
-  miaow.compile(options, function (err, cache) {
+  miaow.compile(options, function (err, cache, options) {
     if (err) {
       mutil.log(chalk.red.bold('编译失败'));
 
-      err.showStack = false;
+      err.showStack = !!options.verbase;
       console.error(err.toString());
       process.exit(1);
       return;
