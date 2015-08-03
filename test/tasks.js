@@ -135,7 +135,7 @@ describe('任务', function () {
     }
 
     var options = _.extend({}, defaultOptions, {
-      domain: '//www.example.com',
+      domain: '//www.example.com/foo',
       module: {
         tasks: [
           {
@@ -149,7 +149,7 @@ describe('任务', function () {
     exec(options, [
       {
         path: 'bar.js',
-        content: 'var foo = require(\'//www.example.com/foo_1ca528407f.js\');\n\nconsole.log(foo);\n'
+        content: 'var foo = require(\'//www.example.com/foo/foo_1ca528407f.js\');\n\nconsole.log(foo);\n'
       }
     ], done);
   });
