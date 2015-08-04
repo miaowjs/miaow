@@ -1,7 +1,7 @@
 {
   "name": "miaow",
   "description": "基于模块的前端构建工具",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "repository": "miaowjs/miaow",
   "author": {
     "name": "anhulife",
@@ -21,6 +21,7 @@
     "glob": "~5.0.10",
     "lodash": "~3.8.0",
     "miaow-util": "~0.5.1",
+    "minimatch": "~2.0.1",
     "moment": "~2.10.3",
     "q": "~1.4.1",
     "serialize-javascript": "~1.0.0",
