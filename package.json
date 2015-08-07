@@ -1,7 +1,7 @@
 {
   "name": "miaow",
   "description": "基于模块的前端构建工具",
-  "version": "3.5.3",
+  "version": "3.5.4",
   "repository": "miaowjs/miaow",
   "author": {
     "name": "anhulife",
@@ -20,7 +20,7 @@
     "fs-extra": "~0.20.1",
     "glob": "~5.0.10",
     "lodash": "~3.8.0",
-    "miaow-util": "~0.5.1",
+    "miaow-util": "~0.6.0",
     "minimatch": "~2.0.1",
     "moment": "~2.10.3",
     "q": "~1.4.1",
