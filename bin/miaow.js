@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 
 var _ = require('lodash');
-var chalk = require('chalk');
-var miaow = require('../index');
-var mutil = require('miaow-util');
 var path = require('path');
 var argv = require('yargs')
   .options({
@@ -27,6 +24,8 @@ var argv = require('yargs')
   })
   .argv;
 
+var miaow = require('../index');
+
 var options = _.pick(argv, ['environment', 'configPath']);
 
 if (argv._.length) {
@@ -37,20 +36,12 @@ if (argv._.length) {
   }
 }
 
+function complete (err) {
+  process.exit(err ? 1 : 0);
+}
+
 if (argv.watch) {
-  miaow.watch(options);
+  miaow.watch(options, complete);
 } else {
-  miaow.compile(options, function (err, cache, options) {
-    if (err) {
-      mutil.log(chalk.red.bold('编译失败'));
-
-      err.showStack = !!options.verbase;
-      console.error(err.toString());
-      process.exit(1);
-      return;
-    }
-
-    cache.destroy();
-    process.exit(0);
-  });
+  miaow.compile(options, complete);
 }
