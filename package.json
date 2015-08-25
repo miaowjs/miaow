@@ -20,7 +20,7 @@
     "fs-extra": "~0.20.1",
     "glob": "~5.0.10",
     "lodash": "~3.8.0",
-    "miaow-util": "~0.7.0",
+    "miaow-util": "~0.7.1",
     "minimatch": "~2.0.1",
     "moment": "~2.10.3",
     "promise": "~7.0.4",
