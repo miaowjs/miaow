@@ -26,14 +26,8 @@ var defaultOptions = {
   plugins: [],
 
   module: {
-    // 前置任务
-    preTasks: [],
-
     // 任务
     tasks: [],
-
-    // 后置任务
-    postTasks: [],
 
     taskMap: {},
 
@@ -112,9 +106,7 @@ module.exports = function(argv) {
   options = _.assign({}, defaultOptions, options);
 
   var module = options.module;
-  module.preTasks = useTaskMap(module.preTasks, module.taskMap);
   module.tasks = useTaskMap(module.tasks, module.taskMap);
-  module.postTasks = useTaskMap(module.postTasks, module.taskMap);
 
   return options;
 };
