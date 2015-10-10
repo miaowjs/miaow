@@ -1,7 +1,7 @@
 {
   "name": "miaow",
   "description": "基于模块的前端构建工具",
-  "version": "4.3.2",
+  "version": "4.3.3",
   "repository": "miaowjs/miaow",
   "author": {
     "name": "anhulife",
@@ -25,6 +25,7 @@
     "moment": "~2.10.3",
     "promise": "~7.0.4",
     "temp": "~0.8.1",
+    "uuid": "~2.0.1",
     "yargs ": "~3.10.0",
     "ws": "~0.7.2"
   },
