@@ -1,12 +1,13 @@
 {
   "name": "miaow",
   "description": "基于模块的前端构建工具",
-  "version": "4.3.2",
+  "version": "5.0.0",
   "repository": "miaowjs/miaow",
   "author": {
     "name": "anhulife",
     "email": "anhulife@gmail.com"
   },
+  "main": "lib/miaow.js",
   "bin": {
     "miaow": "bin/miaow.js"
   },
@@ -29,12 +30,18 @@
     "ws": "~0.7.2"
   },
   "devDependencies": {
-    "iconv-lite": "~0.4.8",
-    "mocha": "^2.2.4"
+    "iconv-lite": "^0.4.8",
+    "mocha": "^2.2.4",
+    "eslint": "^1.6.0",
+    "eslint-config-airbnb": "^0.1.0"
   },
   "scripts": {
+    "check": "npm run lint && npm run test",
+    "lint": "eslint lib bin test",
     "postpublish": "cnpm sync miaow",
-    "test": "node ./node_modules/mocha/bin/mocha"
+    "preversion": "npm run clean && npm run check",
+    "postversion": "git push && git push --tags",
+    "test": "mocha --recursive"
   },
   "engines": {
     "node": ">=0.10"

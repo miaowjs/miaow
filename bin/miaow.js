@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-var _ = require('lodash');
-var path = require('path');
 var argv = require('yargs')
   .options({
     'w': {
@@ -22,26 +20,28 @@ var argv = require('yargs')
       type: 'string'
     }
   })
+  .help('help')
   .argv;
 
-var miaow = require('../index');
+// 获取转换后的参数
+var options = require('./convert-argv')(argv);
 
-var options = _.pick(argv, ['environment', 'configPath']);
+var compiler = require('..')(options);
 
-if (argv._.length) {
-  options.cwd = path.resolve(process.cwd(), argv._[0]);
+function complete(err) {
+  if (err) {
+    console.error(err);
 
-  if (argv._[1]) {
-    options.output = path.resolve(process.cwd(), argv._[1]);
+    if (!options.watch) {
+      process.on('exit', function() {
+        process.exit(1);
+      });
+    }
   }
 }
 
-function complete (err) {
-  process.exit(err ? 1 : 0);
-}
-
-if (argv.watch) {
-  miaow.watch(options, complete);
+if (options.watch) {
+  compiler.watch(options, complete);
 } else {
-  miaow.compile(options, complete);
+  compiler.run(options, complete);
 }
