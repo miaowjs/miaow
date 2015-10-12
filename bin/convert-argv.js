@@ -36,10 +36,7 @@ var defaultOptions = {
   },
 
   resolve: {
-    alias: {},
     modulesDirectories: ['node_modules', 'bower_components'],
-    fallback: [],
-    packageMains: [],
     extensions: ['', '.js'],
     extensionAlias: {
       '.css': ['.less']
