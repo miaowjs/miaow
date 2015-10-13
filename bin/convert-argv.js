@@ -96,5 +96,10 @@ module.exports = function(argv) {
 
   options = _.assign({}, defaultOptions, options);
 
+  var moduleDefault = _.pick(options, ['cwd', 'md5Length', 'md5Connector', 'domain']);
+  options.modules = options.modules.map(function(module) {
+    return _.assign({}, moduleDefault, module);
+  });
+
   return options;
 };
