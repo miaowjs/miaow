@@ -4,20 +4,23 @@ var path = require('path');
 
 var processCWD = process.cwd();
 var defaultOptions = {
-  // 当前工作目录
+  // 工作目录
   cwd: process.cwd(),
 
   // 排除的文件或目录(glob格式)
   exclude: [],
 
-  // 输出的主目录
+  // 输出目录
   output: 'build',
 
+  // 缓存目录
+  cache: '',
+
   // hash版本号的长度，如果不想加就设置为0
-  hash: 10,
+  md5Length: 10,
 
   // hash版本号连接符
-  hashConcat: '.',
+  md5Connector: '.',
 
   // 静态文件的域名
   domain: '',
@@ -25,16 +28,13 @@ var defaultOptions = {
   // 插件
   plugins: [],
 
-  module: {
-    // 任务
-    tasks: [],
+  // 模块编译设置
+  modules: [],
 
-    taskMap: {},
+  // 打包设置
+  package: [],
 
-    // 文件生成配置
-    road: []
-  },
-
+  // 寻路设置
   resolve: {
     modulesDirectories: ['node_modules', 'bower_components'],
     extensions: ['', '.js'],
@@ -60,12 +60,6 @@ function getConfigPath(argv) {
   configPathList.push(path.resolve(processCWD, 'miaow.config.js'));
 
   return _.find(configPathList, fs.existsSync);
-}
-
-function useTaskMap(tasks, taskMap) {
-  return tasks.map(function(task) {
-    return _.isString(task) ? taskMap[task] : task;
-  });
 }
 
 module.exports = function(argv) {
@@ -101,9 +95,6 @@ module.exports = function(argv) {
   }
 
   options = _.assign({}, defaultOptions, options);
-
-  var module = options.module;
-  module.tasks = useTaskMap(module.tasks, module.taskMap);
 
   return options;
 };
