@@ -5,6 +5,7 @@
     "node": true
   },
   "rules": {
+    "no-shadow": 0,
     "id-length": 0,
     "valid-jsdoc": 2,
     "func-names": 0,
