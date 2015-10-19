@@ -2,22 +2,28 @@
 
 var argv = require('yargs')
   .options({
-    'w': {
+    w: {
       alias: 'watch',
       describe: '监听文件变化实时编译',
       type: 'boolean'
     },
 
-    'e': {
+    e: {
       alias: 'environment',
       describe: '启用哪个环境配置',
       type: 'string'
     },
 
-    'c': {
+    c: {
       alias: 'configPath',
       describe: '配置文件路径',
       type: 'string'
+    },
+
+    s: {
+      alias: 'silent',
+      describe: '是否产出一些提示和警告信息',
+      type: 'boolean'
     }
   })
   .help('help')
@@ -25,6 +31,7 @@ var argv = require('yargs')
 
 // 获取转换后的参数
 var options = require('./convert-argv')(argv);
+var console = new (require('../lib/Console'))(argv.silent);
 
 var compiler = require('..')(options);
 
@@ -41,7 +48,7 @@ function complete(err) {
 }
 
 if (options.watch) {
-  compiler.watch(options, complete);
+  compiler.watch(complete);
 } else {
-  compiler.run(options, complete);
+  compiler.run(complete);
 }
