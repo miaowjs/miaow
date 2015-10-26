@@ -13,27 +13,23 @@
   },
   "license": "MIT",
   "dependencies": {
-    "async": "~1.4.1",
-    "chalk": "~1.0.0",
-    "chokidar": "~1.0.3",
-    "dateformat": "~1.0.11",
+    "async": "~1.4.2",
+    "chokidar": "~1.2.0 ",
     "freeport": "~1.0.5",
-    "fs-extra": "~0.20.1",
-    "glob": "~5.0.10",
-    "iconv-lite": "^0.4.8",
-    "lodash": "~3.8.0",
-    "miaow-util": "~0.7.1",
-    "minimatch": "~2.0.1",
+    "glob": "~5.0.15",
+    "iconv-lite": "^0.4.13",
+    "lodash": "~3.10.1",
+    "miaow-util": "~1.0.0",
+    "minimatch": "~3.0.0",
     "mkdirp": "~0.5.1",
-    "moment": "~2.10.3",
     "promise": "~7.0.4",
     "real-path": "~1.0.4",
     "resolve": "~1.1.6",
+    "serialize-javascript": "~1.1.2",
     "tapable": "~0.1.9",
-    "temp": "~0.8.1",
-    "yargs ": "~3.10.0",
+    "yargs ": "~3.27.0",
     "uuid": "~2.0.1",
-    "ws": "~0.7.2"
+    "ws": "~0.8.0"
   },
   "devDependencies": {
     "mocha": "^2.2.4",
@@ -42,11 +38,11 @@
   },
   "scripts": {
     "check": "npm run lint && npm run test",
-    "lint": "eslint lib bin test",
+    "lint": "eslint lib bin",
     "postpublish": "cnpm sync miaow",
-    "preversion": "npm run clean && npm run check",
+    "preversion": "npm run check",
     "postversion": "git push && git push --tags",
-    "test": "mocha --recursive"
+    "test": "mocha"
   },
   "engines": {
     "node": ">=0.10"
