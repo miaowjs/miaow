@@ -1,41 +1,48 @@
 {
   "name": "miaow",
   "description": "基于模块的前端构建工具",
-  "version": "4.3.4",
+  "version": "5.0.0",
   "repository": "miaowjs/miaow",
   "author": {
     "name": "anhulife",
     "email": "anhulife@gmail.com"
   },
+  "main": "lib/miaow.js",
   "bin": {
     "miaow": "bin/miaow.js"
   },
   "license": "MIT",
   "dependencies": {
-    "async": "~0.9.0",
-    "chalk": "~1.0.0",
-    "chokidar": "~1.0.3",
-    "dateformat": "~1.0.11",
+    "async": "~1.4.2",
+    "chokidar": "~1.2.0 ",
     "freeport": "~1.0.5",
-    "fs-extra": "~0.20.1",
-    "glob": "~5.0.10",
-    "lodash": "~3.8.0",
-    "miaow-util": "~0.7.1",
-    "minimatch": "~2.0.1",
-    "moment": "~2.10.3",
+    "glob": "~5.0.15",
+    "iconv-lite": "^0.4.13",
+    "lodash": "~3.10.1",
+    "miaow-util": "~1.0.0",
+    "minimatch": "~3.0.0",
+    "mkdirp": "~0.5.1",
     "promise": "~7.0.4",
-    "temp": "~0.8.1",
+    "real-path": "~1.0.4",
+    "resolve": "~1.1.6",
+    "serialize-javascript": "~1.1.2",
+    "tapable": "~0.1.9",
+    "yargs ": "~3.27.0",
     "uuid": "~2.0.1",
-    "yargs ": "~3.10.0",
-    "ws": "~0.7.2"
+    "ws": "~0.8.0"
   },
   "devDependencies": {
-    "iconv-lite": "~0.4.8",
-    "mocha": "^2.2.4"
+    "mocha": "^2.2.4",
+    "eslint": "^1.6.0",
+    "eslint-config-airbnb": "^0.1.0"
   },
   "scripts": {
+    "check": "npm run lint && npm run test",
+    "lint": "eslint lib bin",
     "postpublish": "cnpm sync miaow",
-    "test": "node ./node_modules/mocha/bin/mocha"
+    "preversion": "npm run check",
+    "postversion": "git push && git push --tags",
+    "test": "mocha"
   },
   "engines": {
     "node": ">=0.10"

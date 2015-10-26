@@ -1,0 +1,41 @@
+var _ = require('lodash');
+var assert = require('assert');
+var fs = require('fs');
+var path = require('path');
+
+var miaow = require('..');
+describe('喵呜', function() {
+  this.timeout(10e3);
+
+  var log;
+
+  before(function(done) {
+    miaow({
+      context: path.resolve(__dirname, './fixtures')
+    }, function(err) {
+      if (err) {
+        console.error(err.toString(), err.stack);
+        process.exit(1);
+      }
+
+      log = JSON.parse(fs.readFileSync(path.resolve(__dirname, './output/miaow.log.json')));
+      done();
+    });
+  });
+
+  it('接口是否存在', function() {
+    assert(!!miaow);
+  });
+
+  it('输出', function() {
+    assert.equal(_.find(log.modules, {src: 'dest.es6'}).destHash, 'ada4700e6323da09861f30b0eaea0720');
+  });
+
+  it('寻路', function() {
+    assert.equal(_.find(log.modules, {src: 'resolve.js'}).destHash, '95082fd03228ff5bcf7bae4fa52ac796');
+  });
+
+  it('创建', function() {
+    assert.equal(_.find(log.modules, {src: 'emit.js'}).destHash, '62d36035e56c8ffa4213361137b01ed2');
+  });
+});
