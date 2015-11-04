@@ -45,29 +45,33 @@ if (argv._[1]) {
 
 var compiler = require('..')(options);
 
+function showError(err) {
+  var text = ['错误信息：'];
+
+  if (_.isString(err)) {
+    err = {
+      message: err
+    };
+  }
+
+  if (err.file) {
+    text.push('文件：' + err.file);
+  }
+
+  if (err.message) {
+    text.push('消息：' + err.message);
+  }
+
+  if (err.details) {
+    text.push('细节：' + err.details);
+  }
+
+  console.error(text.join('\n'));
+}
+
 function complete(err) {
   if (err) {
-    var text = ['错误信息：'];
-
-    if (_.isString(err)) {
-      err = {
-        message: err
-      };
-    }
-
-    if (err.file) {
-      text.push('文件：' + err.file);
-    }
-
-    if (err.message) {
-      text.push('消息：' + err.message);
-    }
-
-    if (err.details) {
-      text.push('细节：' + err.details);
-    }
-
-    console.error(text.join('\n'));
+    (_.isArray(err) ? err : [err]).forEach(showError);
 
     if (!options.watch) {
       process.on('exit', function() {

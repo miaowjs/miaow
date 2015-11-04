@@ -1,7 +1,7 @@
 {
   "name": "miaow",
   "description": "基于模块的前端构建工具",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "repository": "miaowjs/miaow",
   "author": {
     "name": "anhulife",
@@ -22,6 +22,7 @@
     "miaow-util": "~1.0.0",
     "minimatch": "~3.0.0",
     "mkdirp": "~0.5.1",
+    "path-is-absolute": "~1.0.0",
     "promise": "~7.0.4",
     "real-path": "~1.0.4",
     "resolve": "~1.1.6",

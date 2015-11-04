@@ -1,3 +1,4 @@
+var async = require('async');
 var path = require('path');
 
 module.exports = {
@@ -41,14 +42,10 @@ module.exports = {
         function(options, callback) {
           var context = this;
 
-          context.resolveModule('foo', function(err, foo) {
-            if (err) {
-              callback(err);
-            } else {
-              context.contents = new Buffer('console.log(\'foo is ' + foo.url + '\');');
-              callback();
-            }
-          });
+          async.series([
+            context.resolveModule.bind(context, 'bar'),
+            context.resolveModule.bind(context, 'foo')
+          ], callback);
         }
       ]
     },
@@ -69,15 +66,15 @@ module.exports = {
           });
         }
       ]
-    },
-
-    {
-      test: 'error.js',
-      tasks: [
-        function(options, callback) {
-          recast.parse(this.contents.toString());
-        }
-      ]
     }
-  ]
+  ],
+
+  // 寻路设置
+  resolve: {
+    moduleDirectory: ['.remote', 'bower_components'],
+    extensions: ['.js'],
+    extensionAlias: {
+      '.css': ['.less']
+    }
+  }
 };

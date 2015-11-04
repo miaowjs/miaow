@@ -32,7 +32,7 @@ describe('喵呜', function() {
   });
 
   it('寻路', function() {
-    assert.equal(_.find(log.modules, {src: 'resolve.js'}).destHash, '95082fd03228ff5bcf7bae4fa52ac796');
+    assert.equal(_.find(log.modules, {src: 'resolve.js'}).destHash, 'd41d8cd98f00b204e9800998ecf8427e');
   });
 
   it('创建', function() {
