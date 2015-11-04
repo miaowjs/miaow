@@ -28,14 +28,14 @@ describe('喵呜', function() {
   });
 
   it('输出', function() {
-    assert.equal(_.find(log.modules, {src: 'dest.es6'}).destHash, 'ada4700e6323da09861f30b0eaea0720');
+    assert.equal(log.modules['dest.es6'].destHash, 'ada4700e6323da09861f30b0eaea0720');
   });
 
   it('寻路', function() {
-    assert.equal(_.find(log.modules, {src: 'resolve.js'}).destHash, 'd41d8cd98f00b204e9800998ecf8427e');
+    assert.equal(log.modules['resolve.js'].destHash, 'd41d8cd98f00b204e9800998ecf8427e');
   });
 
   it('创建', function() {
-    assert.equal(_.find(log.modules, {src: 'emit.js'}).destHash, '62d36035e56c8ffa4213361137b01ed2');
+    assert.equal(log.modules['emit.js'].destHash, '62d36035e56c8ffa4213361137b01ed2');
   });
 });
