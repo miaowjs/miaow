@@ -1,7 +1,7 @@
 {
   "name": "miaow",
   "description": "基于模块的前端构建工具",
-  "version": "5.1.1",
+  "version": "5.1.2",
   "repository": "miaowjs/miaow",
   "author": {
     "name": "anhulife",
@@ -17,6 +17,7 @@
     "chokidar": "~1.2.0 ",
     "freeport": "~1.0.5",
     "glob": "~5.0.15",
+    "graceful-fs": "~4.1.2",
     "iconv-lite": "^0.4.13",
     "lodash": "~3.10.1",
     "miaow-util": "~1.0.0",
