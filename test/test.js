@@ -35,6 +35,10 @@ describe('喵呜', function() {
     assert.equal(log.modules['resolve.js'].destHash, 'd41d8cd98f00b204e9800998ecf8427e');
   });
 
+  it('调试', function() {
+    assert.equal(log.modules['debug.js'].destHash, 'b326b5062b2f0e69046810717534cb09');
+  });
+
   it('创建', function() {
     assert.equal(log.modules['emit.js'].destHash, '62d36035e56c8ffa4213361137b01ed2');
   });

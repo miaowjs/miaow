@@ -23,6 +23,9 @@ module.exports = {
   // 静态文件的域名
   domain: 'http://127.0.0.1/',
 
+  // 调试模式
+  debug: true,
+
   // 插件
   plugins: [],
 
@@ -64,6 +67,18 @@ module.exports = {
               callback();
             }
           });
+        }
+      ]
+    },
+
+    {
+      test: 'debug.js',
+      tasks: [
+        function(options, callback) {
+          var context = this;
+
+          context.contents = new Buffer('' + context.debug);
+          callback();
         }
       ]
     }
