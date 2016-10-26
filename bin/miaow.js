@@ -26,6 +26,11 @@ var argv = require('yargs')
       alias: 'silent',
       describe: '是否产出一些提示和警告信息',
       type: 'boolean'
+    },
+
+    cache: {
+      describe: '缓存目录',
+      type: 'string'
     }
   })
   .help('help')
@@ -34,7 +39,7 @@ var argv = require('yargs')
 // 获取转换后的参数
 var console = require('miaow-util').console;
 
-var options = _.pick(argv, ['watch', 'environment', 'configPath', 'silent']);
+var options = _.pick(argv, ['watch', 'environment', 'configPath', 'silent', 'cache']);
 if (argv._[0]) {
   options.context = path.resolve(process.cwd(), argv._[0]);
 }
