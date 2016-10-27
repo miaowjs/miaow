@@ -28,7 +28,8 @@ var argv = require('yargs')
       type: 'boolean'
     },
 
-    cache: {
+    ca: {
+      alias: 'cache',
       describe: '缓存目录',
       type: 'string'
     }
