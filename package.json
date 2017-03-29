@@ -1,7 +1,7 @@
 {
   "name": "miaow",
   "description": "基于模块的前端构建工具",
-  "version": "5.7.3",
+  "version": "5.7.4",
   "repository": "miaowjs/miaow",
   "author": {
     "name": "anhulife",
