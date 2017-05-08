@@ -20,7 +20,7 @@ const getFinalOptionsFromConfigFile = (options) => {
   }
 
   // 获取配置文件内的配置信息
-  const optionsFromConfigFile = require(configFile);
+  const optionsFromConfigFile = require(configFile); // eslint-disable-line
   console.log(`配置信息来自 ${configFile}`);
 
   // 如果是数组就返回处理后的数组
