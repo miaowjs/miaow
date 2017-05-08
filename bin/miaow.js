@@ -13,12 +13,6 @@ const options = yargs
       type: 'boolean',
     },
 
-    e: {
-      alias: 'environment',
-      describe: '启用哪个环境配置',
-      type: 'string',
-    },
-
     c: {
       alias: 'configPath',
       describe: '配置文件路径',
