@@ -26,10 +26,10 @@ const getFinalOptionsFromConfigFile = (options) => {
   // 如果是数组就返回处理后的数组
   if (Array.isArray(optionsFromConfigFile)) {
     return optionsFromConfigFile.map(_options =>
-      Object.assign({}, options, _options));
+      Object.assign({}, _options, options));
   }
 
-  return Object.assign({}, options, optionsFromConfigFile);
+  return Object.assign({}, optionsFromConfigFile, options);
 };
 
 module.exports = getFinalOptionsFromConfigFile;
