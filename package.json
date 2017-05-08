@@ -1,42 +1,45 @@
 {
   "name": "miaow",
-  "description": "基于模块的前端构建工具",
-  "version": "5.7.4",
+  "description": "基于 webpack 的传统前端项目构建工具",
+  "version": "6.0.0",
   "repository": "miaowjs/miaow",
-  "author": {
-    "name": "anhulife",
-    "email": "anhulife@gmail.com"
-  },
+  "author": "Liang Feng @anhulife",
   "main": "lib/miaow.js",
   "bin": {
     "miaow": "bin/miaow.js"
   },
   "license": "MIT",
   "dependencies": {
-    "async": "1.4.2",
-    "chokidar": "1.2.0 ",
-    "freeport": "1.0.5",
-    "glob": "5.0.15",
-    "graceful-fs": "4.1.4",
-    "iconv-lite": "0.4.13",
-    "lodash": "3.10.1",
-    "miaow-util": "1.1.0",
-    "minimatch": "3.0.2",
-    "mkdirp": "0.5.1",
-    "path-is-absolute": "1.0.0",
-    "promise": "7.0.4",
-    "real-path": "1.0.4",
-    "resolve": "1.1.7",
-    "serialize-javascript": "1.1.2",
-    "tapable": "0.1.10",
-    "yargs ": "3.27.0",
-    "uuid": "2.0.2",
-    "ws": "0.8.1"
+    "art-template": "~4.8.2",
+    "art-template-loader": "~1.4.2",
+    "autoprefixer": "~6.7.7",
+    "babel-core": "~6.24.1",
+    "babel-loader": "~7.0.0",
+    "babel-preset-env": "~1.4.0",
+    "copy-webpack-plugin": "~4.0.1",
+    "css-loader": "~0.28.0",
+    "file-loader": "~0.11.1",
+    "handlebars-loader": "^1.5.0",
+    "imagemin-webpack-plugin": "~1.4.4",
+    "less": "~2.7.2",
+    "less-loader": "~4.0.3",
+    "lodash": "~4.17.4",
+    "postcss-loader": "~1.3.3",
+    "style-loader": "~0.16.1",
+    "tpl-loader": "~0.2.1",
+    "uglify-js": "~2.8.22",
+    "uglifyjs-webpack-plugin": "~0.4.3",
+    "url-loader": "~0.5.8",
+    "vue-loader": "~11.3.4",
+    "vue-template-compiler": "~2.2.6",
+    "webpack": "~2.4.1",
+    "yargs": "~7.1.0"
   },
   "devDependencies": {
-    "mocha": "^2.2.4",
-    "eslint": "^1.6.0",
-    "eslint-config-airbnb": "^0.1.0"
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "mocha": "^2.5.3"
   },
   "scripts": {
     "check": "npm run lint && npm run test",
@@ -47,6 +50,6 @@
     "test": "mocha"
   },
   "engines": {
-    "node": ">=0.10"
+    "node": ">=6.10.2 <7.0.0"
   }
 }

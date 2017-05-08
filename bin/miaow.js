@@ -1,94 +1,54 @@
 #!/usr/bin/env node
 
-var _ = require('lodash');
-var path = require('path');
-var argv = require('yargs')
+const path = require('path');
+const yargs = require('yargs');
+
+const getFinalOptionsFromConfigFile = require('./getFinalOptionsFromConfigFile');
+
+const options = yargs
   .options({
     w: {
       alias: 'watch',
       describe: '监听文件变化实时编译',
-      type: 'boolean'
+      type: 'boolean',
     },
 
     e: {
       alias: 'environment',
       describe: '启用哪个环境配置',
-      type: 'string'
+      type: 'string',
     },
 
     c: {
       alias: 'configPath',
       describe: '配置文件路径',
-      type: 'string'
+      type: 'string',
     },
 
-    s: {
-      alias: 'silent',
-      describe: '是否产出一些提示和警告信息',
-      type: 'boolean'
+    p: {
+      alias: 'production',
+      describe: '是否是生产环境',
+      type: 'boolean',
     },
-
-    ca: {
-      alias: 'cache',
-      describe: '缓存目录',
-      type: 'string'
-    }
   })
   .help('help')
   .argv;
 
-// 获取转换后的参数
-var console = require('miaow-util').console;
-
-var options = _.pick(argv, ['watch', 'environment', 'configPath', 'silent', 'cache']);
-if (argv._[0]) {
-  options.context = path.resolve(process.cwd(), argv._[0]);
+// 获取上下文
+if (options._[0]) {
+  options.context = path.resolve(process.cwd(), options._[0]);
 }
 
-if (argv._[1]) {
-  options.output = path.resolve(process.cwd(), argv._[1]);
+// 获取输出目录
+if (options._[1]) {
+  options.output = path.resolve(process.cwd(), options._[1]);
 }
 
-var compiler = require('..')(options);
+// 开始编译
+require('..')(getFinalOptionsFromConfigFile(options))
+  .catch((err) => {
+    // 出错后，需要打印错误，并将退出码改成 1
+    console.error(err.stack || err);
 
-function showError(err) {
-  var text = ['错误信息：'];
-
-  if (_.isString(err)) {
-    err = {
-      message: err
-    };
-  }
-
-  if (err.file) {
-    text.push('文件：' + err.file);
-  }
-
-  if (err.message) {
-    text.push('消息：' + err.message);
-  }
-
-  if (err.details) {
-    text.push('细节：' + err.details);
-  }
-
-  console.error(text.join('\n'));
-}
-
-function complete(err) {
-  if (err) {
-    (_.isArray(err) ? err : [err]).forEach(showError);
-
-    if (!options.watch) {
-      process.on('exit', function() {
-        process.exit(1);
-      });
-    }
-  }
-}
-
-if (options.watch) {
-  compiler.watch(complete);
-} else {
-  compiler.run(complete);
-}
+    process.on('exit', () => process.exit(1));
+  });
