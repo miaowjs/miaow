@@ -3,7 +3,7 @@
 const path = require('path');
 const yargs = require('yargs');
 
-const getFinalOptionsFromConfigFile = require('./getFinalOptionsFromConfigFile');
+const convertOptions = require('./convertOptions');
 
 const options = yargs
   .options({
@@ -39,7 +39,7 @@ if (options._[1]) {
 }
 
 // 开始编译
-require('..')(getFinalOptionsFromConfigFile(options))
+require('..')(convertOptions(options))
   .catch((err) => {
     // 出错后，需要打印错误，并将退出码改成 1
     console.error(err.stack || err);

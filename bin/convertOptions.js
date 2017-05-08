@@ -5,7 +5,7 @@ const path = require('path');
 const processCWD = process.cwd();
 
 // 读取配置文件并结合传入的选项得到最终的选项
-const getFinalOptionsFromConfigFile = (options) => {
+const convertOptions = (options) => {
   // 获取可用的配置文件
   const configFileList = [];
   if (options.configPath) {
@@ -32,4 +32,4 @@ const getFinalOptionsFromConfigFile = (options) => {
   return Object.assign({}, optionsFromConfigFile, options);
 };
 
-module.exports = getFinalOptionsFromConfigFile;
+module.exports = convertOptions;
