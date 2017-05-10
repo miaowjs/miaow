@@ -2,4 +2,5 @@
 .DS_Store
 .vscode
 *.log
-/node_modules
+build
+node_modules
