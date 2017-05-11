@@ -11,7 +11,7 @@ const desktopConfig = {
     },
     {
       script: './desktop/login/index.js',
-      template: './desktop/loing/index.html',
+      template: './desktop/login/index.html',
     },
   ],
   commons: [
