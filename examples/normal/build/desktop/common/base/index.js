@@ -157,7 +157,9 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nconsole.log('util-1');\n\n//////////////////\n// WEBPACK FOOTER\n// ./desktop/common/util-1.js\n// module id = 0\n// module chunks = 3\n\n//# sourceURL=webpack:///./desktop/common/util-1.js?");
+
+
+console.log('util-1');
 
 /***/ }),
 /* 1 */,
@@ -167,7 +169,16 @@ eval("\n\nconsole.log('util-1');\n\n//////////////////\n// WEBPACK FOOTER\n// ./
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _util = __webpack_require__(0);\n\nvar _util2 = _interopRequireDefault(_util);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconsole.log('base');\n\n//////////////////\n// WEBPACK FOOTER\n// ./desktop/common/base/index.js\n// module id = 4\n// module chunks = 3\n\n//# sourceURL=webpack:///./desktop/common/base/index.js?");
+
+
+var _util = __webpack_require__(0);
+
+var _util2 = _interopRequireDefault(_util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+console.log('base');
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=index.js.map
