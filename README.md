@@ -138,7 +138,10 @@ import _ from 'lodash';
 import core from '../core';
 ...
 ```
-QAWSEDRT6Y7U8I90O-P=]\÷```javascript
+
+通过以下配置，我们可以得到两个公共模块，业务脚本在打包时会排除这两个公共模块及其依赖。
+
+```javascript
 module.exports = {
   commons: [
     './base/index.js',
