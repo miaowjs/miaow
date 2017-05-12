@@ -48,7 +48,7 @@ $ miaow ./src ./build
 | publicPath | 公共路径，CDN                                 | string  | /                                        |
 | entries    | 入口配置                                     | Array   | []                                       |
 | commons    | 公共模块，以数组形式提供                             | Array   | []                                       |
-| syncFiles  | 需要从基础目录同步到输出目录的文件列表                      | Array   | []                                       |
+| syncFiles  | 需要从基础目录同步到输出目录的文件列表，例如： `['relative/file.txt', '/absolute/file.txt', 'relative/dir', '/absolute/dir', '**/*', {glob:'**/*', dot: true}]`，Globs 可以参考 [minimatch options](https://github.com/isaacs/minimatch) | Array   | []                                       |
 | define     | 变量替换配置，用于替换脚本内的一些变量，提供的值会扩展默认值           | Object  | {}                                       |
 | browsers   | 需要支持的浏览器列表，用来做 Babel 编译和 CSS 的浏览器前缀自动补全，[参考文档](https://github.com/ai/browserslist) | Array   | ['> 1%', 'last 2 versions', 'iOS >= 6', 'Android >= 2.1', 'Explorer >= 7', 'Firefox >= 38', 'Chrome >= 30'] |
 | watch      | 是否启动监听模式                                 | boolean | false                                    |
