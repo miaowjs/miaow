@@ -1,6 +1,6 @@
-webpackJsonp([1],[
-/* 0 */,
-/* 1 */
+webpackJsonp([1],{
+
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9,15 +9,14 @@ webpackJsonp([1],[
 console.log('util-2');
 
 /***/ }),
-/* 2 */,
-/* 3 */,
-/* 4 */
+
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _base = __webpack_require__(3);
+var _base = __webpack_require__(4);
 
 var _base2 = _interopRequireDefault(_base);
 
@@ -34,5 +33,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 console.log('core');
 
 /***/ })
-],[4]);
+
+},[5]);
 //# sourceMappingURL=index.js.map
