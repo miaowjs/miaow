@@ -1,0 +1,9 @@
+{
+  "name": "echarts-example",
+  "scripts": {
+    "build": "node ../../bin/miaow.js src build"
+  },
+  "dependencies": {
+    "echarts": "^3.5.4"
+  }
+}
