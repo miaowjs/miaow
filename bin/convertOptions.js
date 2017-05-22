@@ -12,7 +12,9 @@ const convertOptions = (options) => {
     configFileList.push(path.resolve(processCWD, options.configPath));
   }
 
-  configFileList.push(path.resolve(processCWD, options.context || '', 'miaow.config.js'));
+  configFileList.push(path.resolve(processCWD, options.context, 'miaow.config.js'));
+  configFileList.push(path.resolve(processCWD, 'miaow.config.js'));
+
   const configFile = configFileList.find(fs.existsSync);
 
   if (!configFile) {
