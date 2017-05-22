@@ -1,5 +1,4 @@
 const path = require('path');
-const miaow = require('../..');
 
 const desktopConfig = {
   // watch: true,
@@ -40,4 +39,4 @@ const mobileConfig = {
   publicPath: '//pimg1.126.net/fa/mobile/',
 };
 
-miaow([desktopConfig, mobileConfig]);
+module.exports = [desktopConfig, mobileConfig];

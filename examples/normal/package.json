@@ -1,0 +1,6 @@
+{
+  "name": "normal-example",
+  "scripts": {
+    "build": "node ../../bin/miaow.js src build"
+  }
+}
