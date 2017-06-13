@@ -9,6 +9,7 @@ import style2 from './style.less';
 import image from 'image.png';
 
 import helloReact from './hello.react';
+import foo from './foo';
 
 console.log('index', image);
 

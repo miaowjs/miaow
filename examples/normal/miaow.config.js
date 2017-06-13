@@ -1,8 +1,6 @@
 const path = require('path');
 
 const desktopConfig = {
-  // watch: true,
-  // production: true,
   entries: [
     {
       script: './desktop/index/index.js',
@@ -23,8 +21,6 @@ const desktopConfig = {
 };
 
 const mobileConfig = {
-  // watch: true,
-  // production: true,
   entries: [
     {
       script: './mobile/index/index.js',
