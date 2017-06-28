@@ -40,19 +40,19 @@ $ miaow ./src ./build
 
 ### 配置说明
 
-|            | 说明                                       | 类型      | 默认值                                      |
-| ---------- | ---------------------------------------- | ------- | ---------------------------------------- |
-| context    | 基础目录，绝对路径                                | string  | 程序                                       |
-| output     | 输出目录，绝对路径                                | string  |                                          |
-| filename   | 输出的文件名                                   | string  | name[.hash:10].js                        |
-| publicPath | 公共路径，CDN                                 | string  | /                                        |
-| entries    | 入口配置                                     | Array   | []                                       |
-| commons    | 公共模块，以数组形式提供                             | Array   | []                                       |
-| syncFiles  | 需要从基础目录同步到输出目录的文件列表，例如： `['relative/file.txt', '/absolute/file.txt', 'relative/dir', '/absolute/dir', '**/*', {glob:'**/*', dot: true}]`，Globs 可以参考 [minimatch options](https://github.com/isaacs/minimatch) | Array   | []                                       |
-| define     | 变量替换配置，用于替换脚本内的一些变量，提供的值会扩展默认值           | Object  | {}                                       |
-| browsers   | 需要支持的浏览器列表，用来做 Babel 编译和 CSS 的浏览器前缀自动补全，[参考文档](https://github.com/ai/browserslist) | Array   | ['> 1%', 'last 2 versions', 'iOS >= 6', 'Android >= 2.1', 'Explorer >= 7', 'Firefox >= 38', 'Chrome >= 30'] |
-| watch      | 是否启动监听模式                                 | boolean | false                                    |
-| production | 是否切换到生产环境模式                              | boolean | false                                    |
+|            | 说明                                       | 类型      | 默认值               |
+| ---------- | ---------------------------------------- | ------- | ----------------- |
+| context    | 基础目录，绝对路径                                | string  | 程序                |
+| output     | 输出目录，绝对路径                                | string  |                   |
+| filename   | 输出的文件名                                   | string  | name[.hash:10].js |
+| publicPath | 公共路径，CDN                                 | string  | /                 |
+| entries    | 入口配置                                     | Array   | []                |
+| manifest   | 存放 webpack 启动脚本的路径                       | string  | manifest          |
+| commons    | 公共模块，以数组形式提供                             | Array   | []                |
+| syncFiles  | 需要从基础目录同步到输出目录的文件列表，例如： `['relative/file.txt', '/absolute/file.txt', 'relative/dir', '/absolute/dir', '**/*', {glob:'**/*', dot: true}]`，Globs 可以参考 [minimatch options](https://github.com/isaacs/minimatch) | Array   | []                |
+| define     | 变量替换配置，用于替换脚本内的一些变量，提供的值会扩展默认值           | Object  | {}                |
+| watch      | 是否启动监听模式                                 | boolean | false             |
+| production | 是否切换到生产环境模式                              | boolean | false             |
 
 #### 实例
 
@@ -168,3 +168,52 @@ module.exports = {
 ```
 
 喵呜也提供了`define`参数扩展变量替换。
+
+### Babel 配置
+
+喵呜使用`Babel`编译`JavaScript`脚本，并已经设定了一些默认配置：
+
+```javascript
+options: {
+  cacheDirectory: true,
+    presets: [
+      ['env', { targets: { browsers }, modules: false }],
+      'react',
+      'stage-2',
+    ],
+},
+```
+
+用户可以在项目中增加`.babelrc`配置文件来覆盖默认配置。
+
+### Autoprefixer 配置
+
+喵呜已经为用户安装了`Autoprefixer`，用户只需要在项目根目录增加一个名为`postcss.config.js`的配置文件就可以启用，内容如下：
+
+```javascript
+// postcss.config.js
+module.exports = {
+  plugins: [
+    require('autoprefixer')
+  ]
+};
+```
+
+### 浏览器兼容设置
+
+喵呜使用的`Autoprefixer`和`Babel`都项目指定浏览器兼容范围，这个范围可以在项目的`package.json`里面配置，推荐的配置信息（[配置语法](https://github.com/ai/browserslist)）如下：
+
+```json
+{
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "iOS >= 8",
+    "Android >= 4",
+    "Explorer >= 8",
+    "Firefox >= 43",
+    "Chrome >= 45"
+  ]
+}
+```
+

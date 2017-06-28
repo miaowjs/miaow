@@ -11,6 +11,7 @@ const desktopConfig = {
       template: './desktop/login/index.html',
     },
   ],
+  manifest: 'desktop/manifest',
   commons: [
     './desktop/common/base/index.js',
     './desktop/common/core/index.js',
@@ -27,6 +28,7 @@ const mobileConfig = {
       template: './mobile/index/index.html',
     },
   ],
+  manifest: 'mobile/manifest',
   commons: [
     './mobile/common/base/index.js',
     './mobile/common/core/index.js',
