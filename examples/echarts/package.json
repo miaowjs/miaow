@@ -5,5 +5,14 @@
   },
   "dependencies": {
     "echarts": "^3.5.4"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "iOS >= 6",
+    "Android >= 2.1",
+    "Explorer >= 7",
+    "Firefox >= 38",
+    "Chrome >= 30"
+  ]
 }
