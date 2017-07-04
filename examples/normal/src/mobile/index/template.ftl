@@ -9,6 +9,11 @@
 </head>
 <body>
   <#include "./inc.ftl">
+
+  <#if __debug__>
+  debug
+  </#if>
+
   <div id="app"></div>
   <@__inject_common_scripts__ />
   <@__inject_entry_scripts__ />
