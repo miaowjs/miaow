@@ -4,37 +4,39 @@ const desktopConfig = {
   entries: [
     {
       script: './desktop/index/index.js',
-      template: './desktop/index/index.html',
     },
     {
       script: './desktop/login/index.js',
-      template: './desktop/login/index.html',
     },
   ],
-  manifest: 'desktop/manifest',
+  manifest: './desktop/manifest.js',
   commons: [
     './desktop/common/base/index.js',
     './desktop/common/core/index.js',
   ],
   context: path.resolve('./src'),
-  publicPath: '//pimg1.126.net/fa/desktop/',
-  syncFiles: ['**/*.txt', '**/*.html'],
+  output: path.resolve('./output'),
+  publicPath: '/',
 };
 
 const mobileConfig = {
   entries: [
     {
       script: './mobile/index/index.js',
-      template: './mobile/index/index.html',
+      template: './mobile/index/template.ftl',
     },
   ],
-  manifest: 'mobile/manifest',
+  manifest: './mobile/manifest.js',
   commons: [
     './mobile/common/base/index.js',
     './mobile/common/core/index.js',
   ],
   context: path.resolve('./src'),
-  publicPath: '//pimg1.126.net/fa/mobile/',
+  output: path.resolve('./output'),
+  publicPath: '/',
+  configurationFactory(configuration) {
+    return configuration;
+  },
 };
 
 module.exports = [desktopConfig, mobileConfig];

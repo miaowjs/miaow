@@ -1,7 +1,10 @@
 {
   "name": "normal-example",
   "scripts": {
-    "build": "node ../../bin/miaow.js src build"
+    "init": "cnpm install",
+    "clean": "rimraf ./output",
+    "build": "npm run init && npm run clean && node ../../bin/miaow.js",
+    "release": "npm run init && npm run clean && node ../../bin/miaow.js -p"
   },
   "browserslist": [
     "> 1%",
@@ -11,5 +14,8 @@
     "Explorer >= 8",
     "Firefox >= 43",
     "Chrome >= 45"
-  ]
+  ],
+  "devDependencies": {
+    "rimraf": "^2.6.1"
+  }
 }

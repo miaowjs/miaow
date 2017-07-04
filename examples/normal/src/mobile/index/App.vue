@@ -13,10 +13,10 @@
         name: 'world',
       };
     },
-  }
+  };
 </script>
 
-<style>
+<style lang="less" scoped>
   .container {
     color: red;
   }

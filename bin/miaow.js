@@ -2,10 +2,11 @@
 
 const path = require('path');
 const yargs = require('yargs');
+const pickby = require('lodash.pickby');
 
 const convertOptions = require('./convertOptions');
 
-const options = yargs
+let options = yargs
   .options({
     w: {
       alias: 'watch',
@@ -24,6 +25,11 @@ const options = yargs
       describe: '是否是生产环境',
       type: 'boolean',
     },
+
+    publicPath: {
+      describe: '输出解析文件的目录',
+      type: 'string',
+    },
   })
   .help('help')
   .argv;
@@ -37,6 +43,9 @@ if (options._[0]) {
 if (options._[1]) {
   options.output = path.resolve(process.cwd(), options._[1]);
 }
+
+const optionKeys = ['context', 'output', 'watch', 'configPath', 'production', 'publicPath'];
+options = pickby(options, (value, key) => value !== undefined && optionKeys.indexOf(key) !== -1);
 
 // 开始编译
 require('..')(convertOptions(options))

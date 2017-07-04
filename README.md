@@ -8,6 +8,11 @@
 * 支持以 FreeMaker 为模版的多页面站点
 * 隐藏了复杂的 Webpack 的配置，只暴露简单配置项
 
+### TODO
+
+- 使用路径的 hash 值替代 chunk 和 module 的名字
+- 输出静态文件的线上路径到一个独立的 FTL 文件里面
+
 ### 安装
 
 ```bash
@@ -40,19 +45,20 @@ $ miaow ./src ./build
 
 ### 配置说明
 
-|            | 说明                                       | 类型      | 默认值               |
-| ---------- | ---------------------------------------- | ------- | ----------------- |
-| context    | 基础目录，绝对路径                                | string  | 程序                |
-| output     | 输出目录，绝对路径                                | string  |                   |
-| filename   | 输出的文件名                                   | string  | name[.hash:10].js |
-| publicPath | 公共路径，CDN                                 | string  | /                 |
-| entries    | 入口配置                                     | Array   | []                |
-| manifest   | 存放 webpack 启动脚本的路径                       | string  | manifest          |
-| commons    | 公共模块，以数组形式提供                             | Array   | []                |
-| syncFiles  | 需要从基础目录同步到输出目录的文件列表，例如： `['relative/file.txt', '/absolute/file.txt', 'relative/dir', '/absolute/dir', '**/*', {glob:'**/*', dot: true}]`，Globs 可以参考 [minimatch options](https://github.com/isaacs/minimatch) | Array   | []                |
-| define     | 变量替换配置，用于替换脚本内的一些变量，提供的值会扩展默认值           | Object  | {}                |
-| watch      | 是否启动监听模式                                 | boolean | false             |
-| production | 是否切换到生产环境模式                              | boolean | false             |
+|                      | 说明                                       | 类型                      | 默认值                                      |
+| -------------------- | ---------------------------------------- | ----------------------- | ---------------------------------------- |
+| context              | 基础目录，绝对路径                                | string                  | 程序                                       |
+| output               | 输出目录，绝对路径                                | string                  |                                          |
+| filename             | 输出的文件名                                   | string                  | name[.hash:10].js                        |
+| publicPath           | 公共路径，CDN                                 | string                  | /                                        |
+| entries              | 入口配置                                     | Array                   | []                                       |
+| manifest             | 存放 webpack 启动脚本 manifest 的路径             | string                  | ./manifest                               |
+| commons              | 公共模块，以数组形式提供                             | Array                   | []                                       |
+| syncFiles            | 需要从基础目录同步到输出目录的文件列表，例如： `['relative/file.txt', '/absolute/file.txt', 'relative/dir', '/absolute/dir', '**/*', {glob:'**/*', dot: true}]`，Globs 可以参考 [minimatch options](https://github.com/isaacs/minimatch) | Array                   | []                                       |
+| define               | 变量替换配置，用于替换脚本内的一些变量，提供的值会扩展默认值           | Object                  | {}                                       |
+| watch                | 是否启动监听模式                                 | boolean                 | false                                    |
+| production           | 是否切换到生产环境模式                              | boolean                 | false                                    |
+| configurationFactory | 配置信息加工工厂，用于加工喵呜生成的 webpack configuration，支持 Promise 异步 | function(configuration) | function (configuration) { return configuration;} |
 
 #### 实例
 

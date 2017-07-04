@@ -4,11 +4,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="shortcut icon" href="./favicon.ico">
+  <link rel="stylesheet" href="./index.less">
 </head>
 <body>
+  <#include "./inc.ftl">
   <div id="app"></div>
-  <script src="../common/base/index.js"></script>
-  <script src="../common/core/index.js"></script>
-  <script src="./index.js"></script>
+  <@__inject_common_scripts__ />
+  <@__inject_entry_scripts__ />
 </body>
 </html>
