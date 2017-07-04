@@ -9,11 +9,6 @@
     "miaow": "bin/miaow.js"
   },
   "license": "MIT",
-  "files": [
-    "bin",
-    "lib",
-    "README.md"
-  ],
   "dependencies": {
     "art-template": "~4.11.0",
     "art-template-loader": "~1.4.3",
