@@ -13,6 +13,7 @@
 - 使用路径的 hash 值替代 chunk 和 module 的名字
 - 输出静态文件的线上路径到一个独立的 FTL 文件里面
 - 优化编译的日志输出
+- ajax 和 websocket mock 的考虑
 
 ### 安装
 
