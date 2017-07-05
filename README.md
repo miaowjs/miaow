@@ -232,7 +232,7 @@ module.exports = {
 ```json
 {
   "dependencies": {
-	"vue": "2.3.4",
+    "vue": "2.3.4",
     "vue-template-compiler": "2.3.4"
   }
 }
