@@ -15,7 +15,6 @@ const desktopConfig = {
     './desktop/common/core/index.js',
   ],
   context: path.resolve('./src'),
-  output: path.resolve('./output'),
   publicPath: '/',
 };
 
@@ -32,7 +31,6 @@ const mobileConfig = {
     './mobile/common/core/index.js',
   ],
   context: path.resolve('./src'),
-  output: path.resolve('./output'),
   publicPath: '/',
   configurationFactory(configuration) {
     return configuration;

@@ -2,9 +2,12 @@
   "name": "normal-example",
   "scripts": {
     "init": "cnpm install",
-    "clean": "rimraf ./output",
+    "clean": "rimraf ./build",
     "build": "npm run init && npm run clean && node ../../bin/miaow.js",
-    "release": "npm run init && npm run clean && node ../../bin/miaow.js -p"
+    "release": "npm run init && npm run clean && node ../../bin/miaow.js -p && npm run release.mv",
+    "release.mv": "rimraf ./release && npm run release.mv.html && npm run release.mv.ftl",
+    "release.mv.html": "cpy '**/*.*' '!**/*.ftl' '../release/html' --parents --cwd=build",
+    "release.mv.ftl": "cpy '**/*.ftl' '../release/FE' --parents --cwd=build"
   },
   "browserslist": [
     "> 1%",
@@ -16,6 +19,7 @@
     "Chrome >= 45"
   ],
   "devDependencies": {
+    "cpy-cli": "^1.0.1",
     "rimraf": "^2.6.1"
   }
 }
