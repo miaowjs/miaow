@@ -38,11 +38,11 @@ $ miaow ./src ./build
 
 `miaow`命令支持的选项如下：
 
-|              | 说明          | 类型      | 默认值             |
-| ------------ | ----------- | ------- | --------------- |
-| --configPath | 配置文件的路径     | string  | miaow.config.js |
-| --watch      | 是否启动监听模式    | boolean | false           |
-| --production | 是否切换到生产环境模式 | boolean | false           |
+|                  | 说明          | 类型      | 默认值             |
+| ---------------- | ----------- | ------- | --------------- |
+| -c, --configPath | 配置文件的路径     | string  | miaow.config.js |
+| -w, --watch      | 是否启动监听模式    | boolean | false           |
+| -p, --production | 是否切换到生产环境模式 | boolean | false           |
 
 ### 配置说明
 
