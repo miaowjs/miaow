@@ -224,3 +224,16 @@ module.exports = {
 }
 ```
 
+### 使用 Vue
+
+喵呜支持`.vue`文件的编译，但是需要用户自行安装[vue](http://npmjs.com/package/vue)和[vue-template-compiler](http://npmjs.com/package/vue-template-compiler)，并保证这两个的版本一致，如下:
+
+```json
+{
+  "dependencies": {
+	"vue": "2.3.4",
+    "vue-template-compiler": "2.3.4"
+  }
+}
+```
+
