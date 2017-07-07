@@ -9,6 +9,7 @@ import image from 'image.png';
 
 import helloReact from './hello.react';
 import foo from './foo';
+import mock from './mock?debug';
 
 console.log('index', image);
 

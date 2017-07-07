@@ -177,6 +177,16 @@ module.exports = {
 
 喵呜也提供了`define`参数扩展变量替换。
 
+### 假数据文件引入
+
+在代码中引入假数据是常用的测试方法，喵呜为了帮助用户引用假数据，提供了以下这种方式文件引用方式：
+
+```javascript
+import mock from './mock?debug'
+```
+
+`?debug`标记了`./mock`文件只在本地开发模式下引用，线上模式不做引用。
+
 ### Babel 配置
 
 喵呜使用`Babel`编译`JavaScript`脚本，并已经设定了一些默认配置：

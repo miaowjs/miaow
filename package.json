@@ -27,6 +27,7 @@
     "imagemin-webpack-plugin": "~1.4.4",
     "less": "~2.7.2",
     "less-loader": "~4.0.4",
+    "loader-utils": "~1.1.0",
     "lodash.pickby": "~4.6.0",
     "postcss-loader": "~2.0.6",
     "shrink-style-loader": "~0.1.2",
