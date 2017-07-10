@@ -24,6 +24,10 @@ const mobileConfig = {
       script: './mobile/index/index.js',
       template: './mobile/index/template.ftl',
     },
+    {
+      script: './mobile/login/index.js',
+      template: './mobile/login/template.ftl',
+    },
   ],
   manifest: './mobile/manifest.js',
   commons: [
