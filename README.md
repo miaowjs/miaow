@@ -194,11 +194,16 @@ import mock from './mock?debug'
 ```javascript
 options: {
   cacheDirectory: true,
-    presets: [
-      ['env', { targets: { browsers }, modules: false }],
-      'react',
-      'stage-2',
-    ],
+  presets: [
+    ['env', { targets: { browsers }, modules: false }],
+    'react',
+    'stage-2',
+  ],
+  plugins: [
+    ['transform-runtime', {
+      polyfill: false,
+    }],
+  ],
 },
 ```
 
