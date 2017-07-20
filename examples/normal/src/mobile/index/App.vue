@@ -17,7 +17,10 @@
 </script>
 
 <style lang="less" scoped>
+  @import "mixins";
+
   .container {
     color: red;
+    background: url(image.png);
   }
 </style>
