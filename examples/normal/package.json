@@ -7,8 +7,8 @@
     "start": "npm run init && npm run clean && node ../../bin/miaow.js -w",
     "release": "npm run init && npm run clean && node ../../bin/miaow.js -p && npm run release.mv",
     "release.mv": "rimraf ./release && npm run release.mv.html && npm run release.mv.ftl",
-    "release.mv.html": "cpy '**/*.*' '!**/*.ftl' '../release/html' --parents --cwd=build",
-    "release.mv.ftl": "cpy '**/*.ftl' '../release/FE' --parents --cwd=build"
+    "release.mv.html": "cd build && cpy $(find . -type f ! -name '*.ftl' | tr '\n' ' ') ../release/html  --parents",
+    "release.mv.ftl": "cd build && cpy $(find . -type f -name '*.ftl' | tr '\n' ' ') ../release/FE  --parents"
   },
   "browserslist": [
     "> 1%",
