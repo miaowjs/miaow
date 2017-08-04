@@ -23,7 +23,7 @@
     "copy-webpack-plugin": "~4.0.1",
     "css-loader": "~0.28.4",
     "es6-templates": "~0.2.3",
-    "extract-loader": "~0.1.0",
+    "extract-loader": "~1.0.0",
     "fastparse": "~1.1.1",
     "file-loader": "~0.11.2",
     "imagemin-webpack-plugin": "~1.4.4",
