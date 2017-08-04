@@ -38,7 +38,7 @@
     "pify": "~3.0.0",
     "postcss-loader": "~2.0.6",
     "url-loader": "~0.5.9",
-    "vue-loader": "~12.2.1",
+    "vue-loader": "~13.0.2",
     "webpack": "~3.0.0",
     "yargs": "~8.0.2"
   },
