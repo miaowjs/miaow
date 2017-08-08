@@ -6,7 +6,7 @@ const pickby = require('lodash.pickby');
 
 const convertOptions = require('./convertOptions');
 
-let options = yargs
+const options = yargs
   .options({
     w: {
       alias: 'watch',
@@ -45,10 +45,16 @@ if (options._[1]) {
 }
 
 const optionKeys = ['context', 'output', 'watch', 'configPath', 'production', 'publicPath'];
-options = pickby(options, (value, key) => value !== undefined && optionKeys.indexOf(key) !== -1);
+const finaOptions = pickby(
+  options,
+  (value, key) => value !== undefined && optionKeys.indexOf(key) !== -1);
+
+const isNodeV4 = process.versions.node.startsWith('4.');
+const miaowLibPath = isNodeV4 ? '../dist/miaow.js' : '../lib/miaow.js';
 
 // 开始编译
-require('..')(convertOptions(options))
+/* eslint-disable import/no-dynamic-require */
+require(miaowLibPath)(convertOptions(finaOptions))
   .catch((err) => {
     // 出错后，需要打印错误，并将退出码改成 1
     console.error(err.stack || err);
