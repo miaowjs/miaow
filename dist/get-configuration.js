@@ -66,12 +66,15 @@ var getConfiguration = function getConfiguration(_options) {
 
   // 将 commons 里的公共组件添加到 entry 中
   commons.forEach(function (commonScript) {
-    return entry[getChunkName(commonScript)] = commonScript;
+    entry[getChunkName(commonScript)] = commonScript;
   });
 
-  var developmentFilename = '[name].js';
-  var productionFilename = `[name].[chunkhash:${HASH_LENGTH}].js`;
+  var developmentFilename = '[id].js';
+  var productionFilename = '[id].[chunkhash].js';
   var defaultFilename = production ? productionFilename : developmentFilename;
+
+  var developmentChunkFilename = '[hash]-[id].js';
+  var chunkFilename = production ? productionFilename : developmentChunkFilename;
 
   var configuration = {
     watch,
@@ -80,9 +83,10 @@ var getConfiguration = function getConfiguration(_options) {
     output: {
       path: output,
       publicPath,
-      chunkFilename: productionFilename,
+      chunkFilename,
       filename: filename || defaultFilename,
-      pathinfo: !production
+      pathinfo: !production,
+      hashDigestLength: HASH_LENGTH
     },
     devtool: production ? 'nosources-source-map' : 'source-map',
     module: {

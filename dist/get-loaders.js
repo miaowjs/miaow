@@ -42,6 +42,15 @@ function getVueLoader(options) {
   };
 }
 
+// css-loader
+var cssLoader = {
+  loader: 'css-loader',
+  options: {
+    modules: true,
+    localIdentName: `[path][name]__[local]--[hash:base64:${HASH_LENGTH}]`
+  }
+};
+
 function getLoaders(options) {
   var production = options.production,
       define = options.define;
@@ -85,10 +94,13 @@ function getLoaders(options) {
     }]
   }, {
     test: /\.less$/,
-    use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+    use: ['style-loader', cssLoader, 'postcss-loader', 'less-loader']
   }, {
     test: /\.css$/,
-    use: ['style-loader', 'css-loader', 'postcss-loader']
+    use: ['style-loader', cssLoader, 'postcss-loader']
+  }, {
+    test: /\.(tpl|txt)$/,
+    use: ['raw-loader']
   }, {
     test: /\.art$/,
     loader: {

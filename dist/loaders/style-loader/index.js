@@ -15,5 +15,6 @@ module.exports.pitch = function (remainingRequest) {
   return `
     var cssModule = require(${stringifyRemainingRequest});
     require(${addStyleRequest})(cssModule);
+    if(cssModule.locals) module.exports = cssModule.locals;
   `;
 };
