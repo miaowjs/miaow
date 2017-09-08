@@ -5,15 +5,6 @@ var path = require('path');
 var getConfiguration = require('./get-configuration');
 
 function notifyStats(stats) {
-  // 是否正在 watch
-  var hasWatch = !!stats.stats.find(function (item) {
-    return item.compilation.options.watch;
-  });
-
-  if (!hasWatch) {
-    return;
-  }
-
   var notifyOptions = void 0;
 
   var statsInfo = stats.toJson();
