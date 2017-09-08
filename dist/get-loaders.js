@@ -74,6 +74,7 @@ function getLoaders(options) {
     }]
   }, {
     test: /\.vue$/,
+    exclude: /(node_modules|.remote)/,
     use: [getVueLoader(options)]
   }, {
     test: /\.ftl$/,
