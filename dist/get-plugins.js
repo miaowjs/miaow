@@ -41,7 +41,8 @@ function getBasePlugins(options) {
     return { from: syncFile, to: '[path][name].[ext]' };
   })), new webpack.optimize.CommonsChunkPlugin({ names: commonChunks4CommonPlugin }), new webpack.DefinePlugin(define), new FTLPlugin({
     entries: entryChunks,
-    commons: commonChunks4FtlPlugin
+    commons: commonChunks4FtlPlugin,
+    define
   })];
 }
 

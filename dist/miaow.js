@@ -69,10 +69,18 @@ var compile = function compile(options) {
           return;
         }
 
-        // 提示编译结果
-        notifyStats(stats);
         // 打印编译结果
         printStats(stats);
+
+        // 是否正在 watch
+        var hasWatch = !!stats.stats.find(function (item) {
+          return item.compilation.options.watch;
+        });
+        if (hasWatch) {
+          // 提示编译结果
+          notifyStats(stats);
+          return;
+        }
 
         if (stats.hasErrors()) {
           reject('编译失败，请解决完错误之后再重试！');

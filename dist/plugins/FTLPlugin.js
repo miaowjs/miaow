@@ -1,4 +1,17 @@
 var fs = require('fs');
+var replaceall = require('replaceall');
+
+function replaceContent(content) {
+  var definitions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  var newContent = content;
+
+  Object.keys(definitions).forEach(function (key) {
+    newContent = replaceall(key, definitions[key], newContent);
+  });
+
+  return newContent;
+}
 
 // 注入公共脚本的宏
 var injectCommonScriptsMacro = `
@@ -31,17 +44,19 @@ function assignDirective(name, value) {
 }
 
 // 在文件头部插入文本
-function prependContent(filepath, content) {
+function processTemplateFile(filepath, prepend, definitions) {
   return new Promise(function (resolve, reject) {
     // 读取文件
-    fs.readFile(filepath, { encoding: 'utf-8' }, function (readError, data) {
+    fs.readFile(filepath, { encoding: 'utf-8' }, function (readError, content) {
       if (readError) {
         reject(readError);
         return;
       }
 
+      var newContent = replaceContent(content, definitions);
+
       // 写入拼接的内容
-      fs.writeFile(filepath, [content, data].join('\n'), function (writeError) {
+      fs.writeFile(filepath, [prepend, newContent].join('\n'), function (writeError) {
         if (writeError) {
           reject(writeError);
           return;
@@ -62,10 +77,11 @@ function FTLPlugin(options) {
 }
 
 // webpack 运行时调用 注入compiler对象
-FTLPlugin.prototype.apply = function (compiler) {
+FTLPlugin.prototype.apply = function apply(compiler) {
   var _options = this.options,
       commons = _options.commons,
-      entries = _options.entries;
+      entries = _options.entries,
+      definitions = _options.define;
 
   // 编译器已经输出所有的资源后，开始修改入口ftl文件
 
@@ -107,13 +123,13 @@ FTLPlugin.prototype.apply = function (compiler) {
       var scriptDefine = assignDirective('__entry_scripts__', JSON.stringify(scriptPublicPath));
 
       // 最终需要插入到 FTL 的内容，包含了脚本路径和插入脚本的宏
-      var content = [commonDefine, scriptDefine, injectCommonScriptsMacro, injectEntryScriptsMacro].join('');
+      var prepend = [commonDefine, scriptDefine, injectCommonScriptsMacro, injectEntryScriptsMacro].join('');
 
       // FTL 文件的路径
       var templatePath = compilation.assets[template].existsAt;
 
       // 执行插入操作
-      return prependContent(templatePath, content);
+      return processTemplateFile(templatePath, prepend, definitions);
     });
 
     Promise.all(assignInFtlTasks).then(function () {

@@ -1,5 +1,5 @@
-var loaderUtils = require('loader-utils');
 var url = require('url');
+var loaderUtils = require('loader-utils');
 var compile = require('es6-templates').compile;
 
 var _require = require('../../utils'),
@@ -21,18 +21,6 @@ function uniqueInfoInContainer(container, info) {
   container[ident] = info;
 
   return ident;
-}
-
-function replaceDefine(content) {
-  var definitions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-  var newContent = content;
-
-  Object.keys(definitions).forEach(function (key) {
-    return newContent = newContent.replace(key, definitions[key]);
-  });
-
-  return newContent;
 }
 
 /**
@@ -74,7 +62,6 @@ module.exports = function ftlLoader(content) {
       interpolate = _ref.interpolate,
       exportAsDefault = _ref.exportAsDefault,
       exportAsEs6Default = _ref.exportAsEs6Default,
-      definitions = _ref.define,
       _ref$rules = _ref.rules,
       rules = _ref$rules === undefined ? [] : _ref$rules;
 
@@ -172,7 +159,7 @@ module.exports = function ftlLoader(content) {
     exportsString = 'export default ';
   }
 
-  content = replaceDefine(content, definitions).replace(/xxxFTLLINKxxx[0-9.]+xxx/g, function (match) {
+  content = content.replace(/xxxFTLLINKxxx[0-9.]+xxx/g, function (match) {
     var pathInfo = data[match];
 
     if (!pathInfo) {

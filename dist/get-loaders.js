@@ -56,8 +56,7 @@ function getCssLoader(_ref) {
 }
 
 function getLoaders(options) {
-  var production = options.production,
-      define = options.define;
+  var production = options.production;
 
 
   var fileLoaderFilename = production ? `[path][name].[hash:${HASH_LENGTH}].[ext]` : '[path][name].[ext]';
@@ -88,7 +87,6 @@ function getLoaders(options) {
       loader: 'ftl-loader',
       options: {
         attrs: ['link:href', 'img:src', 'include', 'import'],
-        define,
         interpolate: 'require',
         rules: [{
           test: /\.(less|css)$/,
