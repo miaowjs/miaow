@@ -23,7 +23,8 @@ var DEFAULT_OPTIONS = {
   entries: [],
   syncFiles: [],
   define: {},
-  production: false
+  production: false,
+  cssModules: true
 };
 
 // 获取 webpack 的配置信息

@@ -43,13 +43,17 @@ function getVueLoader(options) {
 }
 
 // css-loader
-var cssLoader = {
-  loader: 'css-loader',
-  options: {
-    modules: true,
-    localIdentName: `[path][name]__[local]--[hash:base64:${HASH_LENGTH}]`
-  }
-};
+function getCssLoader(_ref) {
+  var modules = _ref.cssModules;
+
+  return {
+    loader: 'css-loader',
+    options: {
+      modules,
+      localIdentName: `[path][name]__[local]--[hash:base64:${HASH_LENGTH}]`
+    }
+  };
+}
 
 function getLoaders(options) {
   var production = options.production,
@@ -94,10 +98,10 @@ function getLoaders(options) {
     }]
   }, {
     test: /\.less$/,
-    use: ['style-loader', cssLoader, 'postcss-loader', 'less-loader']
+    use: ['style-loader', getCssLoader(options), 'postcss-loader', 'less-loader']
   }, {
     test: /\.css$/,
-    use: ['style-loader', cssLoader, 'postcss-loader']
+    use: ['style-loader', getCssLoader(options), 'postcss-loader']
   }, {
     test: /\.(tpl|txt)$/,
     use: ['raw-loader']

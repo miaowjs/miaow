@@ -19,6 +19,9 @@ if (Math.random() > 0.5) {
   import('./foo');
 }
 
+import style from './style.less';
+console.log(style);
+
 new Vue({
   el: '#app',
   render: h => h(App),

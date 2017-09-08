@@ -36,6 +36,7 @@ const mobileConfig = {
   ],
   context: path.resolve('./src'),
   publicPath: '/',
+  cssModules: false,
   configurationFactory(configuration) {
     return configuration;
   },
