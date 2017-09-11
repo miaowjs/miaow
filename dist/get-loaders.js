@@ -37,6 +37,12 @@ function getVueLoader(options) {
     options: {
       loaders: {
         js: getBabelLoader(options)
+      },
+      transformToRequire: {
+        video: 'src',
+        source: 'src',
+        img: 'src',
+        image: 'xlink:href'
       }
     }
   };
