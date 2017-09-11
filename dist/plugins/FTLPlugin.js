@@ -105,9 +105,16 @@ FTLPlugin.prototype.apply = function apply(compiler) {
       timings: false
     });
 
+    // 页面中需要用到的 JS 脚本的 map
+    var allScriptMap = {};
     // 公共脚本的 publicPath
-    var commonPublicPaths = commons.map(function (common) {
-      return getChunkPublicPath(statsInfo, common);
+    var commonPublicPaths = commons.map(function (common, index) {
+      var publicPath = getChunkPublicPath(statsInfo, common);
+
+      var key = index === 0 ? 'manifest' : common;
+      allScriptMap[key] = publicPath;
+
+      return publicPath;
     });
     // 公共脚本的 FTL 定义
     var commonDefine = assignDirective('__common_scripts__', JSON.stringify(commonPublicPaths));
@@ -122,8 +129,15 @@ FTLPlugin.prototype.apply = function apply(compiler) {
       // 入口脚本的 FTL 定义
       var scriptDefine = assignDirective('__entry_scripts__', JSON.stringify(scriptPublicPath));
 
+      // 添加入口脚本信息
+      if (script) {
+        allScriptMap.entry = scriptPublicPath[0];
+      }
+
+      var allScriptDefine = assignDirective('__all_script_map__', JSON.stringify(allScriptMap));
+
       // 最终需要插入到 FTL 的内容，包含了脚本路径和插入脚本的宏
-      var prepend = [commonDefine, scriptDefine, injectCommonScriptsMacro, injectEntryScriptsMacro].join('');
+      var prepend = [allScriptDefine, commonDefine, scriptDefine, injectCommonScriptsMacro, injectEntryScriptsMacro].join('');
 
       // FTL 文件的路径
       var templatePath = compilation.assets[template].existsAt;
