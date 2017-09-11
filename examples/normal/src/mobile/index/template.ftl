@@ -14,7 +14,7 @@
   debug
   </#if>
 
-  ${__all_script_map__["manifest"]}
+  ${__all_script_map__["mobile/manifest"]}
 
   <div id="app"></div>
   <@__inject_common_scripts__ />

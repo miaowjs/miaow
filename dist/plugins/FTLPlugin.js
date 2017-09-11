@@ -108,11 +108,10 @@ FTLPlugin.prototype.apply = function apply(compiler) {
     // 页面中需要用到的 JS 脚本的 map
     var allScriptMap = {};
     // 公共脚本的 publicPath
-    var commonPublicPaths = commons.map(function (common, index) {
+    var commonPublicPaths = commons.map(function (common) {
       var publicPath = getChunkPublicPath(statsInfo, common);
 
-      var key = index === 0 ? 'manifest' : common;
-      allScriptMap[key] = publicPath;
+      allScriptMap[common] = publicPath;
 
       return publicPath;
     });
