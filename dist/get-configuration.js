@@ -18,7 +18,6 @@ var DEFAULT_OPTIONS = {
   context: processCWD,
   output: path.resolve(processCWD, 'build'),
   publicPath: '/',
-  manifest: 'manifest',
   commons: [],
   entries: [],
   syncFiles: [],

@@ -52,10 +52,8 @@ var Visitor = function () {
   return Visitor;
 }();
 
-module.exports = function createPlugin() {
-  return {
-    install(less, pluginManager) {
-      pluginManager.addVisitor(new Visitor(less));
-    }
-  };
+module.exports = {
+  install(less, pluginManager) {
+    pluginManager.addVisitor(new Visitor(less));
+  }
 };

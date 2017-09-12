@@ -22,6 +22,7 @@
     "clone": "~2.1.1",
     "copy-webpack-plugin": "~4.0.1",
     "css-loader": "~0.28.4",
+    "css-tree": "^1.0.0-alpha23",
     "es6-templates": "~0.2.3",
     "extract-loader": "~1.0.0",
     "fastparse": "~1.1.1",

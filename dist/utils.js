@@ -13,7 +13,7 @@ function getChunkName(entry) {
  * @returns {Boolean}
  */
 function isNeedPrefixTilde(request) {
-  return request && !/^\.?\.?\//.test(request) && !/^~/.test(request) && !/^data:/.test(request) && !isUrl(request) && !pathIsAbsolute(request);
+  return request && !/^\.\.?\//.test(request) && !/^~/.test(request) && !/^data:/.test(request) && !isUrl(request) && !pathIsAbsolute(request);
 }
 
 /**
