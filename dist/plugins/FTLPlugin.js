@@ -83,19 +83,8 @@ FTLPlugin.prototype.apply = function apply(compiler) {
       entries = _options.entries,
       definitions = _options.define;
 
-
-  compiler.plugin('make', function (compilation, callback) {
-    compilation.mainTemplate.plugin('asset-path', function (path, data) {
-      if (data.chunk && data.chunk.id === '" + chunkId + "') {
-        return 'test-test';
-      }
-
-      return path;
-    });
-    callback();
-  });
-
   // 编译器已经输出所有的资源后，开始修改入口ftl文件
+
   compiler.plugin('after-emit', function (compilation, callback) {
     var stats = compilation.getStats();
 

@@ -20,15 +20,10 @@ function getBasePlugins(options) {
       manifest = options.manifest,
       define = options.define;
 
-
-  var manifestInArray = [manifest];
-  if (!manifest) {
-    manifestInArray = [];
-  }
-
   // 公共脚本 chunk
-  var commonChunks4CommonPlugin = commons.reverse().concat(manifestInArray).map(getChunkName);
-  var commonChunks4FtlPlugin = manifestInArray.concat(commons.reverse()).map(getChunkName);
+
+  var commonChunks4CommonPlugin = commons.reverse().concat(manifest).map(getChunkName);
+  var commonChunks4FtlPlugin = [manifest].concat(commons.reverse()).map(getChunkName);
 
   // 入口 chunk
   var entryChunks = entries.filter(function (entry) {
