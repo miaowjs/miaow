@@ -19,7 +19,7 @@ var URLProcessor = function () {
 
       csstree.walk(ast, function (node) {
         if (node.type === 'Url' && isNeedPrefixTilde(node.value.value)) {
-          node.value.value = `./${node.value.value}`;
+          node.value.value = `./${ node.value.value }`;
         }
       });
 

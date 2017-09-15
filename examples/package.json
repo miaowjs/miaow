@@ -1,0 +1,30 @@
+{
+  "name": "normal-example",
+  "scripts": {
+    "init": "npm install",
+    "clean": "rimraf ./build",
+    "build": "npm run init && npm run clean && node ../bin/miaow.js",
+    "start": "npm run init && npm run clean && node ../bin/miaow.js -w",
+    "release": "npm run init && npm run clean && node ../bin/miaow.js -p && npm run release.mv",
+    "release.mv": "rimraf ./release && npm run release.mv.html && npm run release.mv.ftl",
+    "release.mv.html": "cd build && cpy $(find . -type f ! -name '*.ftl' | tr '\n' ' ') ../release/html  --parents",
+    "release.mv.ftl": "cd build && cpy $(find . -type f -name '*.ftl' | tr '\n' ' ') ../release/FE  --parents"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "iOS >= 8",
+    "Android >= 4",
+    "Explorer >= 8",
+    "Firefox >= 43",
+    "Chrome >= 45"
+  ],
+  "dependencies": {
+    "vue": "^2.3.4",
+    "vue-template-compiler": "^2.3.4"
+  },
+  "devDependencies": {
+    "cpy-cli": "^1.0.1",
+    "rimraf": "^2.6.1"
+  }
+}

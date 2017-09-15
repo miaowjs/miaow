@@ -20,7 +20,6 @@ var DEFAULT_OPTIONS = {
   publicPath: '/',
   commons: [],
   entries: [],
-  syncFiles: [],
   define: {},
   production: false,
   cssModules: true
@@ -37,6 +36,7 @@ var getConfiguration = function getConfiguration(_options) {
       publicPath = options.publicPath,
       production = options.production,
       filename = options.filename,
+      chunkFilename = options.chunkFilename,
       define = options.define;
 
   // define 替换信息
@@ -73,9 +73,6 @@ var getConfiguration = function getConfiguration(_options) {
   var productionFilename = '[id].[chunkhash].js';
   var defaultFilename = production ? productionFilename : developmentFilename;
 
-  var developmentChunkFilename = '[hash]-[id].js';
-  var chunkFilename = production ? productionFilename : developmentChunkFilename;
-
   var configuration = {
     watch,
     context,
@@ -83,7 +80,7 @@ var getConfiguration = function getConfiguration(_options) {
     output: {
       path: output,
       publicPath,
-      chunkFilename,
+      chunkFilename: chunkFilename || defaultFilename,
       filename: filename || defaultFilename,
       pathinfo: !production,
       hashDigestLength: HASH_LENGTH

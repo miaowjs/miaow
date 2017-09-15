@@ -1,5 +1,4 @@
 var webpack = require('webpack');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 
 var FTLPlugin = require('./plugins/FTLPlugin');
@@ -15,22 +14,12 @@ var _require2 = require('./utils'),
 
 function getBasePlugins(options) {
   var entries = options.entries,
-      syncFiles = options.syncFiles,
       commons = options.commons,
-      manifest = options.manifest,
+      chunkFilename = options.chunkFilename,
       define = options.define;
 
-
-  var manifestInArray = [manifest];
-  if (!manifest) {
-    manifestInArray = [];
-  }
-
-  // 公共脚本 chunk
-  var commonChunks4CommonPlugin = commons.reverse().concat(manifestInArray).map(getChunkName);
-  var commonChunks4FtlPlugin = manifestInArray.concat(commons.reverse()).map(getChunkName);
-
   // 入口 chunk
+
   var entryChunks = entries.filter(function (entry) {
     return !!entry.template;
   }).map(function (_ref) {
@@ -42,11 +31,9 @@ function getBasePlugins(options) {
     };
   });
 
-  return [new webpack.NamedChunksPlugin(), new CopyWebpackPlugin(syncFiles.map(function (syncFile) {
-    return { from: syncFile, to: '[path][name].[ext]' };
-  })), new webpack.optimize.CommonsChunkPlugin({ names: commonChunks4CommonPlugin }), new webpack.DefinePlugin(define), new FTLPlugin({
+  return [new webpack.NamedChunksPlugin(), new webpack.DefinePlugin(define), new webpack.optimize.CommonsChunkPlugin({ names: commons.map(getChunkName) }), new webpack.optimize.CommonsChunkPlugin({ name: 'manifest', filename: chunkFilename }), new FTLPlugin({
     entries: entryChunks,
-    commons: commonChunks4FtlPlugin,
+    commons: ['manifest'].concat(commons).map(getChunkName),
     define
   })];
 }

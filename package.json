@@ -20,7 +20,6 @@
     "babel-preset-stage-2": "~6.24.1",
     "browserslist": "~2.1.5",
     "clone": "~2.1.1",
-    "copy-webpack-plugin": "~4.0.1",
     "css-loader": "~0.28.4",
     "css-tree": "^1.0.0-alpha23",
     "es6-templates": "~0.2.3",
@@ -50,19 +49,11 @@
     "eslint-plugin-html": "^3.0.0",
     "eslint-plugin-import": "^2.6.1",
     "execa": "^0.8.0",
-    "husky": "^0.14.3",
-    "mocha": "^3.4.2",
-    "vue": "^2.3.4",
-    "vue-template-compiler": "^2.3.4"
+    "husky": "^0.14.3"
   },
   "scripts": {
     "build": "rm -rf dist && babel lib --out-dir dist --copy-files",
-    "check": "npm run lint && npm run test",
-    "lint": "eslint lib bin",
     "postpublish": "cnpm sync miaow",
-    "preversion": "npm run check",
-    "postversion": "git push && git push --tags",
-    "test": "mocha",
     "precommit": "node .hooks/pre-commit.js"
   }
 }

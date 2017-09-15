@@ -1,7 +1,54 @@
+var createHash = require('crypto').createHash;
 var isUrl = require('is-url-superb');
 var pathIsAbsolute = require('path-is-absolute');
+var replaceall = require('replaceall');
 
-// 获取 entry 的名字，主要剔除头部的 ./ 和尾部的 .js
+function getHash(content, length) {
+  var hash = createHash('sha256');
+  hash.update(content);
+
+  return hash.digest('hex').slice(0, length || Number.POSITIVE_INFINITY);
+}
+
+/**
+ * 将字符串的首字母变成大写
+ *
+ * assert.equal(firstLetterToUpperCase('foo'), 'Foo');
+ *
+ * @param {String} str
+ * @returns {String}
+ */
+function firstLetterToUpperCase(str) {
+  return `${ str.charAt(0).toUpperCase() }${ str.slice(1) }`;
+}
+
+/**
+ * 利用对象替换内容
+ *
+ * assert.equal(replaceContent('name is anhulife', { name: 'anhulife' }), 'anhulife is anhulife');
+ *
+ * @param {String} content 需要替换的字符串
+ * @param {Object} [definitions={}] 待替换的对象
+ * @returns {String} 替换后的字符串
+ */
+function replaceContent(content) {
+  var definitions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  var newContent = content;
+
+  Object.keys(definitions).forEach(function (key) {
+    newContent = replaceall(key, definitions[key], newContent);
+  });
+
+  return newContent;
+}
+
+/**
+ * 获取 entry 的名字，主要剔除头部的 ./ 和尾部的 .js
+ *
+ * @param {String} entry
+ * @returns {String}
+ */
 function getChunkName(entry) {
   return entry.replace(/^\.\//, '').replace(/\.js$/, '');
 }
@@ -28,11 +75,14 @@ function isNeedPrefixTilde(request) {
  * @returns {string}
  */
 function prefixTilde(request) {
-  return isNeedPrefixTilde(request) ? `~${request}` : request;
+  return isNeedPrefixTilde(request) ? `~${ request }` : request;
 }
 
 module.exports = {
+  firstLetterToUpperCase,
   getChunkName,
+  getHash,
+  isNeedPrefixTilde,
   prefixTilde,
-  isNeedPrefixTilde
+  replaceContent
 };

@@ -56,7 +56,7 @@ function getCssLoader(_ref) {
     loader: 'css-loader',
     options: {
       modules,
-      localIdentName: `[path][name]__[local]--[hash:base64:${HASH_LENGTH}]`
+      localIdentName: `[path][name]__[local]--[hash:base64:${ HASH_LENGTH }]`
     }
   };
 }
@@ -65,9 +65,9 @@ function getLoaders(options) {
   var production = options.production;
 
 
-  var fileLoaderFilename = production ? `[path][name].[hash:${HASH_LENGTH}].[ext]` : '[path][name].[ext]';
+  var fileLoaderFilename = production ? `[path][name].[hash:${ HASH_LENGTH }].[ext]` : '[path][name].[ext]';
 
-  var cssFileLoaderFilename = production ? `[path][name].[hash:${HASH_LENGTH}].css` : '[path][name].css';
+  var cssFileLoaderFilename = production ? `[path][name].[hash:${ HASH_LENGTH }].css` : '[path][name].css';
 
   return [{
     test: /\.(js|es6)$/,
@@ -97,7 +97,7 @@ function getLoaders(options) {
         interpolate: 'require',
         rules: [{
           test: /\.(less|css)$/,
-          loader: `!file-loader?name=${cssFileLoaderFilename}!extract-loader!css-loader!postcss-loader!less-loader!`
+          loader: `!file-loader?name=${ cssFileLoaderFilename }!extract-loader!css-loader!postcss-loader!less-loader!`
         }]
       }
     }]
