@@ -27,7 +27,6 @@
     "extract-loader": "~1.0.0",
     "fastparse": "~1.1.1",
     "file-loader": "~0.11.2",
-    "imagemin-webpack-plugin": "~1.4.4",
     "is-url-superb": "~2.0.0",
     "less": "~2.7.2",
     "loader-utils": "~1.1.0",

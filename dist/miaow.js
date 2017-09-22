@@ -12,18 +12,18 @@ function notifyStats(stats) {
   if (stats.hasErrors()) {
     notifyOptions = {
       title: '编译失败！！！',
-      message: `共有 ${statsInfo.errors.length} 个错误信息，请自行查看日志`,
+      message: `共有 ${ statsInfo.errors.length } 个错误信息，请自行查看日志`,
       sound: true,
       timeout: 5,
       icon: path.resolve(__dirname, 'notify-images/error.png')
     };
   } else {
-    var warnMessage = stats.hasWarnings() ? `共有 ${statsInfo.warnings.length} 个警告信息，` : '';
+    var warnMessage = stats.hasWarnings() ? `共有 ${ statsInfo.warnings.length } 个警告信息，` : '';
 
     notifyOptions = {
       title: '编译成功',
       timeout: 2,
-      message: `${warnMessage}请自行查看日志`,
+      message: `${ warnMessage }请自行查看日志`,
       icon: path.resolve(__dirname, 'notify-images/success.png')
     };
   }

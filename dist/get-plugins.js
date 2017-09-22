@@ -63,18 +63,6 @@ function getProductionPlugins() {
       }
     },
     sourceMap: true
-  }),
-  // 图片压缩
-  new ImageminWebpackPlugin({
-    test: /\.(jpe?g|png)$/i,
-    optipng: null,
-    pngquant: {
-      quality: '65-90'
-    },
-    jpegtran: {
-      // 开启 JPEG 图片渐进显示特性
-      progressive: true
-    }
   })];
 }
 

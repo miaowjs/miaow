@@ -28,7 +28,7 @@ function isNeedPrefixTilde(request) {
  * @returns {string}
  */
 function prefixTilde(request) {
-  return isNeedPrefixTilde(request) ? `~${request}` : request;
+  return isNeedPrefixTilde(request) ? `~${ request }` : request;
 }
 
 module.exports = {
