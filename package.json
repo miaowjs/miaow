@@ -1,7 +1,7 @@
 {
   "name": "miaow",
   "description": "基于 webpack 的传统前端项目构建工具",
-  "version": "6.0.0-alpha.14",
+  "version": "6.0.0-alpha.15",
   "repository": "miaowjs/miaow",
   "author": "Liang Feng @anhulife",
   "main": "lib/miaow.js",
