@@ -20,7 +20,7 @@ function getFileExcerptIfPossible(lessErr) {
       excerpt.shift();
     }
 
-    excerpt.push(`${ new Array(column).join(' ') }^`);
+    excerpt.push(`${new Array(column).join(' ')}^`);
 
     return excerpt;
   } catch (unexpectedErr) {
@@ -52,7 +52,7 @@ function formatLessError(err) {
   // Usually you're only interested in the SASS stack in this case.
   err.hideStack = true;
 
-  err.message = [os.EOL].concat(_toConsumableArray(getFileExcerptIfPossible(err)), [msg.charAt(0).toUpperCase() + msg.slice(1), `      in ${ err.filename } (line ${ err.line }, column ${ err.column })`]).join(os.EOL);
+  err.message = [os.EOL].concat(_toConsumableArray(getFileExcerptIfPossible(err)), [msg.charAt(0).toUpperCase() + msg.slice(1), `      in ${err.filename} (line ${err.line}, column ${err.column})`]).join(os.EOL);
 
   return err;
 } /* eslint-enable no-param-reassign */

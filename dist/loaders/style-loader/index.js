@@ -9,12 +9,12 @@ module.exports.pitch = function (remainingRequest) {
     _this.cacheable();
   }
 
-  var stringifyRemainingRequest = loaderUtils.stringifyRequest(_this, `!!${ remainingRequest }`);
-  var addStyleRequest = loaderUtils.stringifyRequest(_this, `!${ path.join(__dirname, 'addStyle.js') }`);
+  var stringifyRemainingRequest = loaderUtils.stringifyRequest(_this, `!!${remainingRequest}`);
+  var addStyleRequest = loaderUtils.stringifyRequest(_this, `!${path.join(__dirname, 'addStyle.js')}`);
 
   return `
-    var cssModule = require(${ stringifyRemainingRequest });
-    require(${ addStyleRequest })(cssModule);
+    var cssModule = require(${stringifyRemainingRequest});
+    require(${addStyleRequest})(cssModule);
     if(cssModule.locals) module.exports = cssModule.locals;
   `;
 };

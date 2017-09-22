@@ -31,7 +31,7 @@ var injectEntryScriptsMacro = `
 
 // 获取 chunk 的 publicPath
 function getChunkPublicPath(stats, chunk) {
-  return `${ stats.publicPath }${ stats.assetsByChunkName[chunk][0] }`;
+  return `${stats.publicPath}${stats.assetsByChunkName[chunk][0]}`;
 }
 
 // 获取 assign 指令
@@ -40,7 +40,7 @@ function assignDirective(name, value) {
     throw new Error('assign need name and value!');
   }
 
-  return `<#assign ${ name }=${ value } />\n`;
+  return `<#assign ${name}=${value} />\n`;
 }
 
 // 在文件头部插入文本

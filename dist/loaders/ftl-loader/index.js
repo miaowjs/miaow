@@ -8,7 +8,7 @@ var _require = require('../../utils'),
 var attrParse = require('./attributesParser');
 
 function randomIdent() {
-  return `xxxFTLLINKxxx${ Math.random() }${ Math.random() }xxx`;
+  return `xxxFTLLINKxxx${Math.random()}${Math.random()}xxx`;
 }
 
 function uniqueInfoInContainer(container, info) {
@@ -79,7 +79,7 @@ module.exports = function ftlLoader(content) {
   }
 
   var links = attrParse(content, function (tag, attr) {
-    var attrKey = attr ? `${ tag }:${ attr }` : tag;
+    var attrKey = attr ? `${tag}:${attr}` : tag;
     return attributes.indexOf(attrKey) !== -1;
   });
 
@@ -147,7 +147,7 @@ module.exports = function ftlLoader(content) {
   }
 
   if (interpolate && interpolate !== 'require') {
-    content = compile(`\`${ content }\``).code;
+    content = compile(`\`${content}\``).code;
   } else {
     content = JSON.stringify(content);
   }
@@ -170,10 +170,10 @@ module.exports = function ftlLoader(content) {
         path = _getLoader.path,
         loader = _getLoader.loader;
 
-    var pathWithLoader = JSON.stringify(`${ loader }${ loaderUtils.urlToRequest(path, root) }`);
+    var pathWithLoader = JSON.stringify(`${loader}${loaderUtils.urlToRequest(path, root)}`);
 
-    return `" + require(${ pathWithLoader }) + "`;
+    return `" + require(${pathWithLoader}) + "`;
   });
 
-  return `${ exportsString }${ content };`;
+  return `${exportsString}${content};`;
 };

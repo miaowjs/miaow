@@ -18,8 +18,11 @@ var URLProcessor = function () {
       var ast = csstree.parse(css);
 
       csstree.walk(ast, function (node) {
-        if (node.type === 'Url' && isNeedPrefixTilde(node.value.value)) {
-          node.value.value = `./${ node.value.value }`;
+        if (node.type === 'Url') {
+          var value = node.value.value.replace(/(^')|('$)/g, '');
+          if (isNeedPrefixTilde(value)) {
+            node.value.value = `./${value}`;
+          }
         }
       });
 
