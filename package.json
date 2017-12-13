@@ -29,7 +29,7 @@
     "resolve": "1.1.7",
     "serialize-javascript": "1.1.2",
     "tapable": "0.1.10",
-    "yargs ": "3.27.0",
+    "yargs": "3.27.0",
     "uuid": "2.0.2",
     "ws": "0.8.1"
   },
